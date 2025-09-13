@@ -1,0 +1,88 @@
+
+<html>
+<head>
+        <title>Ejercicio semana 1</title>
+</head>
+<body>
+        <form>
+                <h1>Formulario de ejemplo</h1>
+                <h2>Entrada de datos</h2>
+                <h3>Entrada de texto</h3>
+                <label for="EDT01">Texto:</label>
+                <input type="text" id="EDT01" name="texto" value="texto por defecto" size="20" />
+
+                <h3>Contraseña</h3>
+                <label for="EDP01">Clave:</label>
+                <input type="password" id="EDP01" name="clave" size="20" value="12345" />
+
+                <h3>Checkbox (elige uno o varios colores)</h3>
+                <input type="checkbox" id="rojo" name="color_checkbox" value="rojo" checked>
+                <label for="rojo">Rojo</label>
+                <input type="checkbox" id="azul" name="color_checkbox" value="azul" checked>
+                <label for="azul">Azul</label>
+                <input type="checkbox" id="verde" name="color_checkbox" value="verde">
+                <label for="verde">Verde</label>
+                <input type="checkbox" id="amarillo" name="color_checkbox" value="amarillo">
+                <label for="amarillo">Amarillo</label>
+
+                <h3>Radios (elige un color)</h3>
+                <p>Elige un color:</p>
+                <input type="radio" id="rojo_radio" value="rojo" name="color_radio" checked />
+                <label for="rojo_radio">Rojo</label>
+                <input type="radio" id="azul_radio" value="azul" name="color_radio" />
+                <label for="azul_radio">Azul</label>
+                <input type="radio" id="verde_radio" value="verde" name="color_radio" />
+                <label for="verde_radio">Verde</label>
+                <input type="radio" id="amarillo_radio" value="amarillo" name="color_radio" />
+                <label for="amarillo_radio">Amarillo</label>
+
+                <h3>Fichero</h3>
+                <input type="file" id="identificador" name="nombre" value="valor"/>
+                
+                <h3>Campos ocultos</h3>
+                <input type="hidden" id="campo_oculto" name="campo_oculto" value="valor oculto"/>
+
+                <h3>Imagen</h3>
+                <input type="image" id="imagen" name="imagen" src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Linear_RGB_color_wheel.png" alt="Imagen" width="200" height="150"/>
+                
+                <h3>Área de texto</h3>
+                <label for="area_texto">Área de texto:</label><br>
+                <textarea id="area_texto" name="area_texto" rows="4" cols="50">Texto por defecto</textarea>
+
+                <h3>Combo de opciones</h3>
+                <select id="combo_opciones" name="combo_opciones" multiple size="5">
+                    <optgroup label="Colores primarios">
+                        <option value="azul" selected>Azul</option>
+                        <option value="rojo" selected>Rojo</option>
+                        <option value="verde">Verde</option>
+                    </optgroup>
+                    <optgroup label="Colores secundarios">
+                        <option value="naranja">Naranja</option>
+                        <option value="morado">Morado</option>
+                        <option value="amarillo">Amarillo</option>
+                    </optgroup>
+                    <optgroup label="Colores terciarios">
+                        <option value="cyan">Cyan</option>
+                        <option value="magenta">Magenta</option>
+                        <option value="amarillo">Amarillo</option>
+                    </optgroup>
+                    <optgroup label="Colores neutros">
+                        <option value="blanco">Blanco</option>
+                        <option value="gris">Gris</option>
+                        <option value="negro">Negro</option>
+                    </optgroup>
+                    <optgroup label="Colores pastel">
+                        <option value="rosa">Rosa</option>
+                        <option value="celeste">Celeste</option>
+                        <option value="verde claro">Verde claro</option>
+                    </optgroup>
+                </select>
+
+                <h3>Botones</h3>
+                <input type="submit" value="Enviar" />
+                <input type="reset" value="Restablecer" />
+
+        </form>
+</body>
+</html>
+
