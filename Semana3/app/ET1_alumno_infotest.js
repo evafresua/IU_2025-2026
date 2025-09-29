@@ -1,6 +1,4 @@
-//Van los test para ADD, EDIT....
-//Comparar con los test de la libreta
-let persona_tests_files = Array(let alumnograduacion_def_tests = Array(
+let alumnograduacion_def_tests = Array(
     // ADD
     Array('alumnograduacion', 'alumnograduacion_login', 1, 'ADD', 'Tamaño < 4', false, 'El tamaño debe ser como min 4'),
     Array('alumnograduacion', 'alumnograduacion_login', 2, 'ADD', 'Tamaño > 15', false, 'El tamaño debe ser de máximo 15'),
@@ -143,17 +141,139 @@ let persona_tests_files = Array(let alumnograduacion_def_tests = Array(
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 108, 'SEARCH', 'Búsqueda por nombre de foto parcial', true, 'Se encuentran fotos por coincidencia parcial'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 109, 'SEARCH', 'Búsqueda con caracteres no permitidos', false, 'Solo puede contener caracteres alfabéticos sin acentos ni ñ ni espacios y punto')
 );
-let persona_tests_fields = Array(
-    Array('persona','nombre_persona',1,1,'ADD',[{nombre_persona:'aa'}],'nombre_persona_min_size_KO'),
-    Array('persona','nombre_persona',2,2,'ADD',[{nombre_persona:'a'.repeat(20)}],'nombre_persona_max_size_KO'),
-    Array('persona','nombre_persona',3,3,'ADD',[{nombre_persona:'aaaaaa1'}],'nombre_persona_format_KO'),
-    Array('persona','nombre_persona',4,4,'ADD',[{nombre_persona:'javi'}],true),
-    ['persona','nombre_persona',5,5,'EDIT',[{nombre_persona:'aa'}],'nombre_persona_min_size_KO'],
-    ['persona','nombre_persona',6,6,'EDIT',[{nombre_persona:'aaaaaaaaaaaaaaaaaaaaa'}],'nombre_persona_max_size_KO'],
-    ['persona','nombre_persona',7,7,'EDIT',[{nombre_persona:'aaaaaa1'}],'nombre_persona_format_KO'],
-    ['persona','nombre_persona',8,8,'EDIT',[{nombre_persona:'javi'}],true],
+let alumnograduacion_tests_fields = [
+    // ADD
+    ['alumnograduacion','alumnograduacion_login',1,1,'ADD',[{alumnograduacion_login:'abc'}],'alumnograduacion_login_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_login',2,2,'ADD',[{alumnograduacion_login:'a'.repeat(16)}],'alumnograduacion_login_max_size_KO'],
+    ['alumnograduacion','alumnograduacion_login',3,3,'ADD',[{alumnograduacion_login:'abc1'}],'alumnograduacion_login_format_KO'],
+    ['alumnograduacion','alumnograduacion_login',4,4,'ADD',[{alumnograduacion_login:'ábc'}],'alumnograduacion_login_format_KO'],
+    ['alumnograduacion','alumnograduacion_login',5,5,'ADD',[{alumnograduacion_login:'abcd'}],true,
+
+    ['alumnograduacion','alumnograduacion_password',6,6,'ADD',[{alumnograduacion_password:'abc'}],'alumnograduacion_password_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_password',7,7,'ADD',[{alumnograduacion_password:'a'.repeat(65)}],'alumnograduacion_password_max_size_KO'],
+    ['alumnograduacion','alumnograduacion_password',8,8,'ADD',[{alumnograduacion_password:'abc1'}],'alumnograduacion_password_format_KO'],
+    ['alumnograduacion','alumnograduacion_password',9,9,'ADD',[{alumnograduacion_password:'ábcdefgh'}],'alumnograduacion_password_format_KO'],
+    ['alumnograduacion','alumnograduacion_password',10,10,'ADD',[{alumnograduacion_password:'abcdefgh'}],true,
+
+    ['alumnograduacion','alumnograduacion_nombre',11,11,'ADD',[{alumnograduacion_nombre:'a'}],'alumnograduacion_nombre_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_nombre',12,12,'ADD',[{alumnograduacion_nombre:'a'.repeat(26)}],'alumnograduacion_nombre_max_size_KO'],
+    ['alumnograduacion','alumnograduacion_apellidos',13,13,'ADD',[{alumnograduacion_apellidos:'abc1'}],'alumnograduacion_apellidos_format_KO'],
+    ['alumnograduacion','alumnograduacion_nombre',14,14,'ADD',[{alumnograduacion_nombre:'José'}],true,
+
+    ['alumnograduacion','alumnograduacion_apellidos',15,15,'ADD',[{alumnograduacion_apellidos:'a'}],'alumnograduacion_apellidos_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_apellidos',16,16,'ADD',[{alumnograduacion_apellidos:'a'.repeat(36)}],'alumnograduacion_apellidos_max_size_KO'],
+    ['alumnograduacion','alumnograduacion_apellidos',17,17,'ADD',[{alumnograduacion_apellidos:'abc1'}],'alumnograduacion_apellidos_format_KO'],
+    ['alumnograduacion','alumnograduacion_apellidos',18,18,'ADD',[{alumnograduacion_apellidos:'García López'}],true,
+
+    ['alumnograduacion','alumnograduacion_titulacion',19,19,'ADD',[{alumnograduacion_titulacion:'INVALIDO'}],'alumnograduacion_titulacion_format_KO'],
+    ['alumnograduacion','alumnograduacion_titulacion',20,20,'ADD',[{alumnograduacion_titulacion:'GREI'}],true,
+
+    ['alumnograduacion','alumnograduacion_dni',21,21,'ADD',[{alumnograduacion_dni:'1234567A'}],'alumnograduacion_dni_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_dni',22,22,'ADD',[{alumnograduacion_dni:'123456789'}],'alumnograduacion_dni_format_KO'],
+    ['alumnograduacion','alumnograduacion_dni',23,23,'ADD',[{alumnograduacion_dni:'12345678Z'}],'alumnograduacion_dni_format_KO'],
+    ['alumnograduacion','alumnograduacion_dni',24,24,'ADD',[{alumnograduacion_dni:'12345678A'}],true,
+
+    ['alumnograduacion','alumnograduacion_telefono',25,25,'ADD',[{alumnograduacion_telefono:'12345678'}],'alumnograduacion_telefono_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_telefono',26,26,'ADD',[{alumnograduacion_telefono:'1234567890'}],'alumnograduacion_telefono_max_size_KO'],
+    ['alumnograduacion','alumnograduacion_telefono',27,27,'ADD',[{alumnograduacion_telefono:'12345678A'}],'alumnograduacion_telefono_format_KO'],
+    ['alumnograduacion','alumnograduacion_telefono',28,28,'ADD',[{alumnograduacion_telefono:'123456789'}],true,
+
+    ['alumnograduacion','alumnograduacion_email',29,29,'ADD',[{alumnograduacion_email:'a'.repeat(101)+'@dominio.com'}],'alumnograduacion_email_max_size_KO'],
+
+    ['alumnograduacion','alumnograduacion_direccion',30,30,'ADD',[{alumnograduacion_direccion:''}],'alumnograduacion_direccion_empty_KO'],
+    ['alumnograduacion','alumnograduacion_direccion',31,31,'ADD',[{alumnograduacion_direccion:'@#'}],'alumnograduacion_direccion_format_KO'],
+    ['alumnograduacion','alumnograduacion_direccion',32,32,'ADD',[{alumnograduacion_direccion:'Calle Mayor 1'}],true,
+
+    ['alumnograduacion','alumnograduacion_email',33,33,'ADD',[{alumnograduacion_email:''}],'alumnograduacion_email_empty_KO'],
+    ['alumnograduacion','alumnograduacion_email',34,34,'ADD',[{alumnograduacion_email:'a@b'}],'alumnograduacion_email_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_email',35,35,'ADD',[{alumnograduacion_email:'a'.repeat(101)+'@dominio.com'}],'alumnograduacion_email_max_size_KO'],
+    ['alumnograduacion','alumnograduacion_email',36,36,'ADD',[{alumnograduacion_email:'usuario@dominio'}],'alumnograduacion_email_format_KO'],
+    ['alumnograduacion','alumnograduacion_email',37,37,'ADD',[{alumnograduacion_email:'usuario@dominio.com'}],true,
+
+    // EDIT
+    ['alumnograduacion','alumnograduacion_login',38,38,'EDIT',[{alumnograduacion_login:'abc'}],'alumnograduacion_login_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_login',39,39,'EDIT',[{alumnograduacion_login:'a'.repeat(16)}],'alumnograduacion_login_max_size_KO'],
+    ['alumnograduacion','alumnograduacion_login',40,40,'EDIT',[{alumnograduacion_login:'abc1'}],'alumnograduacion_login_format_KO'],
+    ['alumnograduacion','alumnograduacion_login',41,41,'EDIT',[{alumnograduacion_login:'ábc'}],'alumnograduacion_login_format_KO'],
+    ['alumnograduacion','alumnograduacion_login',42,42,'EDIT',[{alumnograduacion_login:'abcd'}],true,
+
+    ['alumnograduacion','alumnograduacion_password',43,43,'EDIT',[{alumnograduacion_password:'abc'}],'alumnograduacion_password_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_password',44,44,'EDIT',[{alumnograduacion_password:'a'.repeat(65)}],'alumnograduacion_password_max_size_KO'],
+    ['alumnograduacion','alumnograduacion_password',45,45,'EDIT',[{alumnograduacion_password:'abc1'}],'alumnograduacion_password_format_KO'],
+    ['alumnograduacion','alumnograduacion_password',46,46,'EDIT',[{alumnograduacion_password:'ábcdefgh'}],'alumnograduacion_password_format_KO'],
+    ['alumnograduacion','alumnograduacion_password',47,47,'EDIT',[{alumnograduacion_password:'abcdefgh'}],true,
+
+    ['alumnograduacion','alumnograduacion_nombre',48,48,'EDIT',[{alumnograduacion_nombre:'a'}],'alumnograduacion_nombre_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_nombre',49,49,'EDIT',[{alumnograduacion_nombre:'a'.repeat(26)}],'alumnograduacion_nombre_max_size_KO'],
+    ['alumnograduacion','alumnograduacion_apellidos',50,50,'EDIT',[{alumnograduacion_apellidos:'abc1'}],'alumnograduacion_apellidos_format_KO'],
+    ['alumnograduacion','alumnograduacion_nombre',51,51,'EDIT',[{alumnograduacion_nombre:'José'}],true,
+
+    ['alumnograduacion','alumnograduacion_apellidos',52,52,'EDIT',[{alumnograduacion_apellidos:'a'}],'alumnograduacion_apellidos_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_apellidos',53,53,'EDIT',[{alumnograduacion_apellidos:'a'.repeat(36)}],'alumnograduacion_apellidos_max_size_KO'],
+    ['alumnograduacion','alumnograduacion_apellidos',54,54,'EDIT',[{alumnograduacion_apellidos:'abc1'}],'alumnograduacion_apellidos_format_KO'],
+    ['alumnograduacion','alumnograduacion_apellidos',55,55,'EDIT',[{alumnograduacion_apellidos:'García López'}],true,
+
+    ['alumnograduacion','alumnograduacion_titulacion',56,56,'EDIT',[{alumnograduacion_titulacion:'INVALIDO'}],'alumnograduacion_titulacion_format_KO'],
+    ['alumnograduacion','alumnograduacion_titulacion',57,57,'EDIT',[{alumnograduacion_titulacion:'GREI'}],true,
+
+    ['alumnograduacion','alumnograduacion_dni',58,58,'EDIT',[{alumnograduacion_dni:'1234567A'}],'alumnograduacion_dni_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_dni',59,59,'EDIT',[{alumnograduacion_dni:'123456789'}],'alumnograduacion_dni_format_KO'],
+    ['alumnograduacion','alumnograduacion_dni',60,60,'EDIT',[{alumnograduacion_dni:'12345678Z'}],'alumnograduacion_dni_format_KO'],
+    ['alumnograduacion','alumnograduacion_dni',61,61,'EDIT',[{alumnograduacion_dni:'12345678A'}],true,
+
+    ['alumnograduacion','alumnograduacion_telefono',62,62,'EDIT',[{alumnograduacion_telefono:'12345678'}],'alumnograduacion_telefono_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_telefono',63,63,'EDIT',[{alumnograduacion_telefono:'1234567890'}],'alumnograduacion_telefono_max_size_KO'],
+    ['alumnograduacion','alumnograduacion_telefono',64,64,'EDIT',[{alumnograduacion_telefono:'12345678A'}],'alumnograduacion_telefono_format_KO'],
+    ['alumnograduacion','alumnograduacion_telefono',65,65,'EDIT',[{alumnograduacion_telefono:'123456789'}],true,
+
+    ['alumnograduacion','alumnograduacion_email',66,66,'EDIT',[{alumnograduacion_email:'a'.repeat(101)+'@dominio.com'}],'alumnograduacion_email_max_size_KO'],
+
+    ['alumnograduacion','alumnograduacion_direccion',67,67,'EDIT',[{alumnograduacion_direccion:''}],'alumnograduacion_direccion_empty_KO'],
+    ['alumnograduacion','alumnograduacion_direccion',68,68,'EDIT',[{alumnograduacion_direccion:'@#'}],'alumnograduacion_direccion_format_KO'],
+    ['alumnograduacion','alumnograduacion_direccion',69,69,'EDIT',[{alumnograduacion_direccion:'Calle Mayor 1'}],true,
+
+    ['alumnograduacion','alumnograduacion_email',70,70,'EDIT',[{alumnograduacion_email:''}],'alumnograduacion_email_empty_KO'],
+    ['alumnograduacion','alumnograduacion_email',71,71,'EDIT',[{alumnograduacion_email:'a@b'}],'alumnograduacion_email_min_size_KO'],
+    ['alumnograduacion','alumnograduacion_email',72,72,'EDIT',[{alumnograduacion_email:'a'.repeat(101)+'@dominio.com'}],'alumnograduacion_email_max_size_KO'],
+    ['alumnograduacion','alumnograduacion_email',73,73,'EDIT',[{alumnograduacion_email:'usuario@dominio'}],'alumnograduacion_email_format_KO'],
+    ['alumnograduacion','alumnograduacion_email',74,74,'EDIT',[{alumnograduacion_email:'usuario@dominio.com'}],true,
+
+    // SEARCH
+    ['alumnograduacion','alumnograduacion_login',75,75,'SEARCH',[{alumnograduacion_login:''}],true],
+    ['alumnograduacion','alumnograduacion_login',76,76,'SEARCH',[{alumnograduacion_login:'abcd'}],true],
+    ['alumnograduacion','alumnograduacion_login',77,77,'SEARCH',[{alumnograduacion_login:'ab'}],true],
+    ['alumnograduacion','alumnograduacion_login',78,78,'SEARCH',[{alumnograduacion_login:'abcñ'}],'alumnograduacion_login_format_KO'],
+
+    ['alumnograduacion','alumnograduacion_password',79,79,'SEARCH',[{alumnograduacion_password:''}],true],
+    ['alumnograduacion','alumnograduacion_password',80,80,'SEARCH',[{alumnograduacion_password:'abc'}],true],
+    ['alumnograduacion','alumnograduacion_password',81,81,'SEARCH',[{alumnograduacion_password:'abcñ'}],'alumnograduacion_password_format_KO'],
+
+    ['alumnograduacion','alumnograduacion_nombre',82,82,'SEARCH',[{alumnograduacion_nombre:''}],true],
+    ['alumnograduacion','alumnograduacion_nombre',83,83,'SEARCH',[{alumnograduacion_nombre:'José'}],true],
+    ['alumnograduacion','alumnograduacion_nombre',84,84,'SEARCH',[{alumnograduacion_nombre:'abc1'}],'alumnograduacion_nombre_format_KO'],
+
+    ['alumnograduacion','alumnograduacion_apellidos',85,85,'SEARCH',[{alumnograduacion_apellidos:''}],true],
+    ['alumnograduacion','alumnograduacion_apellidos',86,86,'SEARCH',[{alumnograduacion_apellidos:'García'}],true],
+    ['alumnograduacion','alumnograduacion_apellidos',87,87,'SEARCH',[{alumnograduacion_apellidos:'abc1'}],'alumnograduacion_apellidos_format_KO'],
+
+    ['alumnograduacion','alumnograduacion_titulacion',88,88,'SEARCH',[{alumnograduacion_titulacion:''}],true],
+    ['alumnograduacion','alumnograduacion_titulacion',89,89,'SEARCH',[{alumnograduacion_titulacion:'GREI'}],true],
+    ['alumnograduacion','alumnograduacion_titulacion',90,90,'SEARCH',[{alumnograduacion_titulacion:'INVALIDO'}],'alumnograduacion_titulacion_format_KO'],
+
+    ['alumnograduacion','alumnograduacion_dni',91,91,'SEARCH',[{alumnograduacion_dni:''}],true],
+    ['alumnograduacion','alumnograduacion_dni',92,92,'SEARCH',[{alumnograduacion_dni:'12345678A'}],true],
+    ['alumnograduacion','alumnograduacion_dni',93,93,'SEARCH',[{alumnograduacion_dni:'1234567A'}],'alumnograduacion_dni_format_KO'],
+
+    ['alumnograduacion','alumnograduacion_telefono',94,94,'SEARCH',[{alumnograduacion_telefono:''}],true],
+    ['alumnograduacion','alumnograduacion_telefono',95,95,'SEARCH',[{alumnograduacion_telefono:'123456789'}],true],
+    ['alumnograduacion','alumnograduacion_telefono',96,96,'SEARCH',[{alumnograduacion_telefono:'12345678A'}],'alumnograduacion_telefono_format_KO'],
+
+    ['alumnograduacion','alumnograduacion_direccion',97,97,'SEARCH',[{alumnograduacion_direccion:''}],true],
+    ['alumnograduacion','alumnograduacion_direccion',98,98,'SEARCH',[{alumnograduacion_direccion:'Calle Mayor'}],true],
+    ['alumnograduacion','alumnograduacion_direccion',99,99,'SEARCH',[{alumnograduacion_direccion:'@#'}],'alumnograduacion_direccion_format_KO'],
+
+    ['alumnograduacion','alumnograduacion_email',100,100,'SEARCH',[{alumnograduacion_email:''}],true],
+    ['alumnograduacion','alumnograduacion_email',101,101,'SEARCH',[{alumnograduacion_email:'usuario@dominio.com'}],true],
+    ['alumnograduacion','alumnograduacion_email',102,102,'SEARCH',[{alumnograduacion_email:'usuario@dominio'}],'alumnograduacion_email_format_KO']
+    ];
     
-
-
-
-);
