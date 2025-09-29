@@ -95,8 +95,53 @@ let persona_tests_files = Array(let alumnograduacion_def_tests = Array(
     Array('alumnograduacion','alumnograduacion_email', 71, 'EDIT', 'Tamaño > 100', false, 'El tamaño debe ser de máximo 100'),
     Array('alumnograduacion','alumnograduacion_email', 72, 'EDIT', 'Formato incorrecto; tiene que haber un @, seguido de caracteres alfanumericos un punto y algun caracter alfanumérico mas', false, 'El correo electrónico debe tener un formato válido'),
     Array('alumnograduacion','alumnograduacion_email', 73, 'EDIT', 'Caracteres no permitidos', false, 'Solo puede contener caracteres alfabéticos, números, signos de puntuación y espacios en blanco'),
-    Array('alumnograduacion','alumnograduacion_email', 74, 'EDIT', 'Tamaño entre 6 y 100 y formato correcto',
+    Array('alumnograduacion','alumnograduacion_email', 74, 'EDIT', 'Tamaño entre 6 y 100 y formato correcto', true, 'Éxito'),
 
+    // SEARCH
+    Array('alumnograduacion', 'alumnograduacion_login', 75, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_login', 76, 'SEARCH', 'Búsqueda por login exacto', true, 'Se encuentra el usuario por login exacto'),
+    Array('alumnograduacion', 'alumnograduacion_login', 77, 'SEARCH', 'Búsqueda por login parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_login', 78, 'SEARCH', 'Búsqueda con caracteres no permitidos', false, 'Solo puede contener caracteres alfabéticos sin acentos ni ñ'),
+
+    Array('alumnograduacion', 'alumnograduacion_password', 79, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_password', 80, 'SEARCH', 'Búsqueda por password parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_password', 81, 'SEARCH', 'Búsqueda con caracteres no permitidos', false, 'Solo puede contener caracteres alfabéticos y espacios sin acentos ni ñ'),
+
+    Array('alumnograduacion', 'alumnograduacion_nombre', 82, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_nombre', 83, 'SEARCH', 'Búsqueda por nombre parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_nombre', 84, 'SEARCH', 'Búsqueda con caracteres no permitidos', false, 'Solo puede contener caracteres alfabéticos con acentos, ñ y espacios'),
+
+    Array('alumnograduacion', 'alumnograduacion_apellidos', 85, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_apellidos', 86, 'SEARCH', 'Búsqueda por apellidos parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_apellidos', 87, 'SEARCH', 'Búsqueda con caracteres no permitidos', false, 'Solo puede contener caracteres alfabéticos con acentos, ñ y espacios'),
+
+    Array('alumnograduacion', 'alumnograduacion_titulacion', 88, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_titulacion', 89, 'SEARCH', 'Búsqueda por titulacion válida', true, 'Se encuentra usuario por titulacion válida'),
+    Array('alumnograduacion', 'alumnograduacion_titulacion', 90, 'SEARCH', 'Búsqueda por titulacion no válida', false, 'Debe seleccionar una opción válida: GREI, GRIA, MEI, MIA, PCEO'),
+
+    Array('alumnograduacion', 'alumnograduacion_dni', 91, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_dni', 92, 'SEARCH', 'Búsqueda por DNI exacto', true, 'Se encuentra el usuario por DNI exacto'),
+    Array('alumnograduacion', 'alumnograduacion_dni', 93, 'SEARCH', 'Búsqueda por DNI parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_dni', 94, 'SEARCH', 'Búsqueda con formato incorrecto', false, 'Formato nif o nie incorrecto'),
+
+    Array('alumnograduacion', 'alumnograduacion_telefono', 95, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_telefono', 96, 'SEARCH', 'Búsqueda por teléfono exacto', true, 'Se encuentra el usuario por teléfono exacto'),
+    Array('alumnograduacion', 'alumnograduacion_telefono', 97, 'SEARCH', 'Búsqueda por teléfono parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_telefono', 98, 'SEARCH', 'Búsqueda con caracteres no permitidos', false, 'Solo puede contener dígitos'),
+
+    Array('alumnograduacion', 'alumnograduacion_direccion', 99, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_direccion', 100, 'SEARCH', 'Búsqueda por dirección parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_direccion', 101, 'SEARCH', 'Búsqueda con caracteres no permitidos', false, 'Solo puede contener caracteres alfanuméricos con acentos y ñ y espacios'),
+
+    Array('alumnograduacion', 'alumnograduacion_email', 102, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_email', 103, 'SEARCH', 'Búsqueda por email exacto', true, 'Se encuentra el usuario por email exacto'),
+    Array('alumnograduacion', 'alumnograduacion_email', 104, 'SEARCH', 'Búsqueda por email parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_email', 105, 'SEARCH', 'Búsqueda con formato incorrecto', false, 'El correo electrónico debe tener un formato válido'),
+
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 106, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 107, 'SEARCH', 'Búsqueda por nombre de foto exacto', true, 'Se encuentra la foto por nombre exacto'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 108, 'SEARCH', 'Búsqueda por nombre de foto parcial', true, 'Se encuentran fotos por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 109, 'SEARCH', 'Búsqueda con caracteres no permitidos', false, 'Solo puede contener caracteres alfabéticos sin acentos ni ñ ni espacios y punto')
 );
 let persona_tests_fields = Array(
     Array('persona','nombre_persona',1,1,'ADD',[{nombre_persona:'aa'}],'nombre_persona_min_size_KO'),
