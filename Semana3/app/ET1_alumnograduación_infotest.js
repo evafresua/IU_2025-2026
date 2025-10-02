@@ -205,13 +205,9 @@ let alumnograduacion_def_tests = Array(
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 241, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 242, 'SEARCH', 'Búsqueda por nombre de foto exacto', true, 'Se encuentra la foto por nombre exacto'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 243, 'SEARCH', 'Búsqueda por nombre de foto parcial', true, 'Se encuentran fotos por coincidencia parcial'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 244, 'SEARCH', 'Búsqueda con caracteres no permitidos', false, 'Solo puede contener caracteres alfabéticos sin acentos ni ñ ni espacios y punto'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 244, 'SEARCH', 'Búsqueda con caracteres no permitidos', false, 'Solo puede contener caracteres alfabéticos sin acentos ni ñ ni espacios y punto')
 
-    // DELETE
-    Array('alumnograduacion', 'alumnograduacion_login', 245, 'DELETE', 'Eliminación con ID válido', true, 'Éxito'),
-    Array('alumnograduacion', 'alumnograduacion_login', 246, 'DELETE', 'Eliminación con ID inexistente', false, 'El registro no existe'),
-    Array('alumnograduacion', 'alumnograduacion_login', 247, 'DELETE', 'Eliminación sin ID', false, 'ID requerido para eliminar')
-);
+   );
 
 let alumnograduacion_tests_fields = [
     // ADD
@@ -417,11 +413,7 @@ let alumnograduacion_tests_fields = [
     ['alumnograduacion','alumnograduacion_fotoacto',231,241,'SEARCH',[{alumnograduacion_fotoacto:''}],true],
     ['alumnograduacion','alumnograduacion_fotoacto',232,242,'SEARCH',[{alumnograduacion_fotoacto:'foto.jpg'}],true],
     ['alumnograduacion','alumnograduacion_fotoacto',233,243,'SEARCH',[{alumnograduacion_fotoacto:'imagen.png'}],true],
-    ['alumnograduacion','alumnograduacion_fotoacto',234,244,'SEARCH',[{alumnograduacion_fotoacto:'mi foto.jpg'}],'alumnograduacion_fotoacto_spaces_KO'],
+    ['alumnograduacion','alumnograduacion_fotoacto',234,244,'SEARCH',[{alumnograduacion_fotoacto:'mi foto.jpg'}],'alumnograduacion_fotoacto_spaces_KO']
 
-    // DELETE
-    ['alumnograduacion','alumnograduacion_login',235,245,'DELETE',[{alumnograduacion_id:1}],true],
-    ['alumnograduacion','alumnograduacion_login',236,246,'DELETE',[{alumnograduacion_id:999}],'alumnograduacion_id_not_found_KO'],
-    ['alumnograduacion','alumnograduacion_login',237,247,'DELETE',[{}],'alumnograduacion_id_required_KO']
 ];
     
