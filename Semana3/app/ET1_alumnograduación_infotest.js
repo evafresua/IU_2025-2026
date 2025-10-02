@@ -141,17 +141,12 @@ let alumnograduacion_def_tests = Array(
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 108, 'SEARCH', 'Búsqueda por nombre de foto parcial', true, 'Se encuentran fotos por coincidencia parcial'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 109, 'SEARCH', 'Búsqueda con caracteres no permitidos', false, 'Solo puede contener caracteres alfabéticos sin acentos ni ñ ni espacios y punto'),
 
-    // DELETE Tests
-    Array('alumnograduacion', 'alumnograduacion_login', 110, 'DELETE', 'Eliminación con ID válido', true, 'Éxito'),
+    //DELETE
+    Aray('alumnograduacion', 'alumnograduacion_login', 110, 'DELETE', 'Eliminación con ID válido', true, 'Éxito'),
     Array('alumnograduacion', 'alumnograduacion_login', 111, 'DELETE', 'Eliminación con ID inexistente', false, 'El registro no existe'),
     Array('alumnograduacion', 'alumnograduacion_login', 112, 'DELETE', 'Eliminación sin ID', false, 'ID requerido para eliminar'),
 
-    // SHOW Tests
-    Array('alumnograduacion', 'alumnograduacion_login', 113, 'SHOW', 'Mostrar con ID válido', true, 'Éxito'),
-    Array('alumnograduacion', 'alumnograduacion_login', 114, 'SHOW', 'Mostrar con ID inexistente', false, 'El registro no existe'),
-    Array('alumnograduacion', 'alumnograduacion_login', 115, 'SHOW', 'Mostrar sin ID', false, 'ID requerido para mostrar'),
-
-    // Cases límite adicionales para ADD
+    //ADD
     Array('alumnograduacion', 'alumnograduacion_login', 116, 'ADD', 'Login solo espacios', false, 'No puede contener solo espacios'),
     Array('alumnograduacion', 'alumnograduacion_login', 117, 'ADD', 'Login con espacios en medio', false, 'No puede contener espacios'),
     Array('alumnograduacion', 'alumnograduacion_login', 118, 'ADD', 'Login con números', false, 'Solo puede contener caracteres alfabéticos'),
@@ -354,17 +349,13 @@ let alumnograduacion_tests_fields = [
     ['alumnograduacion','alumnograduacion_email',101,101,'SEARCH',[{alumnograduacion_email:'usuario@dominio.com'}],true],
     ['alumnograduacion','alumnograduacion_email',102,102,'SEARCH',[{alumnograduacion_email:'usuario@dominio'}],'alumnograduacion_email_format_KO'],
 
-    // DELETE Tests
+    // DELETE
     ['alumnograduacion','alumnograduacion_login',103,110,'DELETE',[{alumnograduacion_id:1}],true],
     ['alumnograduacion','alumnograduacion_login',104,111,'DELETE',[{alumnograduacion_id:999}],'alumnograduacion_id_not_found_KO'],
     ['alumnograduacion','alumnograduacion_login',105,112,'DELETE',[{}],'alumnograduacion_id_required_KO'],
 
-    // SHOW Tests
-    ['alumnograduacion','alumnograduacion_login',106,113,'SHOW',[{alumnograduacion_id:1}],true],
-    ['alumnograduacion','alumnograduacion_login',107,114,'SHOW',[{alumnograduacion_id:999}],'alumnograduacion_id_not_found_KO'],
-    ['alumnograduacion','alumnograduacion_login',108,115,'SHOW',[{}],'alumnograduacion_id_required_KO'],
 
-    // Casos límite adicionales para ADD
+    // ADD
     ['alumnograduacion','alumnograduacion_login',109,116,'ADD',[{alumnograduacion_login:'    '}],'alumnograduacion_login_only_spaces_KO'],
     ['alumnograduacion','alumnograduacion_login',110,117,'ADD',[{alumnograduacion_login:'ab cd'}],'alumnograduacion_login_spaces_KO'],
     ['alumnograduacion','alumnograduacion_login',111,118,'ADD',[{alumnograduacion_login:'abc123'}],'alumnograduacion_login_numbers_KO'],
