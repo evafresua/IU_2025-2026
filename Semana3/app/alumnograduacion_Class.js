@@ -464,6 +464,10 @@ class alumnograduacion extends Validations {
             this.dom.mostrar_exito_campo('alumnograduacion_fotoacto');
             return true;
         }
+        if (/^\s+$/.test(value)) {
+            this.dom.mostrar_error_campo('alumnograduacion_fotoacto', 'alumnograduacion_fotoacto_only_spaces_KO');
+            return 'alumnograduacion_fotoacto_only_spaces_KO';
+        }
         if (/\s/.test(value)) {
             this.dom.mostrar_error_campo('alumnograduacion_fotoacto', 'alumnograduacion_fotoacto_spaces_KO');
             return 'alumnograduacion_fotoacto_spaces_KO';
@@ -476,7 +480,8 @@ class alumnograduacion extends Validations {
             this.dom.mostrar_error_campo('alumnograduacion_fotoacto', 'alumnograduacion_fotoacto_format_KO');
             return 'alumnograduacion_fotoacto_format_KO';
         }
-        return 'alumnograduacion_fotoacto_spaces_KO';
+        this.dom.mostrar_exito_campo('alumnograduacion_fotoacto');
+        return true;
     }
 
     ADD_submit_alumnograduacion() {
