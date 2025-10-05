@@ -307,10 +307,14 @@ class alumnograduacion extends Validations {
             this.dom.mostrar_error_campo('alumnograduacion_apellidos', 'alumnograduacion_apellidos_only_spaces_KO');
             return 'alumnograduacion_apellidos_only_spaces_KO';
         }
-        if (/[^A-Za-záéíóúÁÉÍÓÚñÑ \-]/.test(value)) {
-                this.dom.mostrar_error_campo('alumnograduacion_apellidos', 'alumnograduacion_apellidos_format_KO');
-                return 'alumnograduacion_apellidos_format_KO';
-            }
+        if (/[0-9]/.test(value)) {
+            this.dom.mostrar_error_campo('alumnograduacion_apellidos', 'alumnograduacion_apellidos_numbers_KO');
+            return 'alumnograduacion_apellidos_numbers_KO';
+        }
+        if (/[^A-Za-záéíóúÁÉÍÓÚñÑ \-0-9]/.test(value)) {
+            this.dom.mostrar_error_campo('alumnograduacion_apellidos', 'alumnograduacion_apellidos_symbols_KO');
+            return 'alumnograduacion_apellidos_symbols_KO';
+        }
         if (value.length < 2) {
             this.dom.mostrar_error_campo('alumnograduacion_apellidos', 'alumnograduacion_apellidos_min_size_KO');
             return 'alumnograduacion_apellidos_min_size_KO';
@@ -326,8 +330,8 @@ class alumnograduacion extends Validations {
     ADD_alumnograduacion_titulacion_validation() {
         let value = document.getElementById('alumnograduacion_titulacion').value;
         if (value === "" || value === undefined || value === null) {
-            this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_format_KO');
-            return 'alumnograduacion_titulacion_format_KO';
+            this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_empty_KO');
+            return 'alumnograduacion_titulacion_empty_KO';
         }
         const valid = ['GREI', 'GRIA', 'MEI', 'MIA', 'PCEO'];
         if (!valid.includes(value)) {
