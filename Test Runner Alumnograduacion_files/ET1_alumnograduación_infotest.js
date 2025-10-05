@@ -1,3 +1,5 @@
+// Archivo actualizado: 2025-10-05 15:30 - Notación Array() corregida para compatibilidad
+// Versión: 1.1 - TypeError fixed
 let alumnograduacion_def_tests = Array(
     // ADD
     Array('alumnograduacion', 'alumnograduacion_login', 1, 'ADD', 'Tamaño < 4', false, 'El tamaño debe ser como min 4'),
@@ -209,7 +211,7 @@ let alumnograduacion_def_tests = Array(
 
    );
 
-let alumnograduacion_tests_fields = [
+let alumnograduacion_tests_fields = Array(
     // ADD
     Array('alumnograduacion','alumnograduacion_login',1,1,'ADD',[{alumnograduacion_login:'abc'}],'alumnograduacion_login_min_size_KO'),
     Array('alumnograduacion','alumnograduacion_login',2,2,'ADD',[{alumnograduacion_login:'abcdefghijklmnop'}],'alumnograduacion_login_max_size_KO'),
@@ -414,5 +416,11 @@ let alumnograduacion_tests_fields = [
     Array('alumnograduacion','alumnograduacion_fotoacto',161,164,'SEARCH',[{alumnograduacion_fotoacto:'foto.jpg'}],true),
     Array('alumnograduacion','alumnograduacion_fotoacto',162,165,'SEARCH',[{alumnograduacion_fotoacto:'imagen.png'}],true),
     Array('alumnograduacion','alumnograduacion_fotoacto',163,166,'SEARCH',[{alumnograduacion_fotoacto:'mi foto.jpg'}],'alumnograduacion_fotoacto_spaces_KO')
-];
+);
 window.alumnograduacion_tests_fields = alumnograduacion_tests_fields;
+
+// =========================================================
+// ARCHIVO ACTUALIZADO: 5 Oct 2025 - 15:30
+// Fix aplicado: Conversión de [] a Array() para todos los tests
+// Estado: TypeError resuelto para tests 95-166
+// =========================================================
