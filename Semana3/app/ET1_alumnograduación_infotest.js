@@ -170,26 +170,26 @@ let alumnograduacion_def_tests = Array(
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 136, 'EDIT', 'Foto sin extensión inválida', 'alumnograduacion_fotoacto_invalid_no_extension_KO', 'Debe incluir extensión válida'),
 
     // SEARCH
-    Array('alumnograduacion', 'alumnograduacion_login', 132, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
-    Array('alumnograduacion', 'alumnograduacion_login', 133, 'SEARCH', 'Búsqueda por login exacto', true, 'Se encuentra el usuario por login exacto'),
-    Array('alumnograduacion', 'alumnograduacion_login', 134, 'SEARCH', 'Búsqueda por login parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
-    Array('alumnograduacion', 'alumnograduacion_login', 135, 'SEARCH', 'Búsqueda con caracteres no permitidos', 'alumnograduacion_login_format_KO', 'Solo puede contener caracteres alfabéticos sin acentos ni ñ'),
+    Array('alumnograduacion', 'alumnograduacion_login', 137, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_login', 138, 'SEARCH', 'Búsqueda por login exacto', true, 'Se encuentra el usuario por login exacto'),
+    Array('alumnograduacion', 'alumnograduacion_login', 139, 'SEARCH', 'Búsqueda por login parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_login', 140, 'SEARCH', 'Búsqueda con caracteres no permitidos', 'alumnograduacion_login_format_KO', 'Solo puede contener caracteres alfabéticos sin acentos ni ñ'),
 
-    Array('alumnograduacion', 'alumnograduacion_password', 136, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
-    Array('alumnograduacion', 'alumnograduacion_password', 137, 'SEARCH', 'Búsqueda por password parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
-    Array('alumnograduacion', 'alumnograduacion_password', 138, 'SEARCH', 'Búsqueda con caracteres no permitidos', 'alumnograduacion_password_invalid_characters_KO', 'Solo puede contener caracteres alfabéticos y espacios sin acentos ni ñ'),
+    Array('alumnograduacion', 'alumnograduacion_password', 141, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_password', 142, 'SEARCH', 'Búsqueda por password parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_password', 143, 'SEARCH', 'Búsqueda con caracteres no permitidos', 'alumnograduacion_password_invalid_characters_KO', 'Solo puede contener caracteres alfabéticos y espacios sin acentos ni ñ'),
 
-    Array('alumnograduacion', 'alumnograduacion_nombre', 139, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
-    Array('alumnograduacion', 'alumnograduacion_nombre', 140, 'SEARCH', 'Búsqueda por nombre parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
-    Array('alumnograduacion', 'alumnograduacion_nombre', 141, 'SEARCH', 'Búsqueda con caracteres no permitidos', 'alumnograduacion_nombre_invalid_characters_KO', 'Solo puede contener caracteres alfabéticos con acentos, ñ y espacios'),
+    Array('alumnograduacion', 'alumnograduacion_nombre', 144, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_nombre', 145, 'SEARCH', 'Búsqueda por nombre parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_nombre', 146, 'SEARCH', 'Búsqueda con caracteres no permitidos', 'alumnograduacion_nombre_invalid_characters_KO', 'Solo puede contener caracteres alfabéticos con acentos, ñ y espacios'),
 
-    Array('alumnograduacion', 'alumnograduacion_apellidos', 142, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
-    Array('alumnograduacion', 'alumnograduacion_apellidos', 143, 'SEARCH', 'Búsqueda por apellidos parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
-    Array('alumnograduacion', 'alumnograduacion_apellidos', 144, 'SEARCH', 'Búsqueda con caracteres no permitidos', 'alumnograduacion_apellidos_invalid_characters_KO', 'Solo puede contener caracteres alfabéticos con acentos, ñ y espacios'),
+    Array('alumnograduacion', 'alumnograduacion_apellidos', 147, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_apellidos', 148, 'SEARCH', 'Búsqueda por apellidos parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_apellidos', 149, 'SEARCH', 'Búsqueda con caracteres no permitidos', 'alumnograduacion_apellidos_invalid_characters_KO', 'Solo puede contener caracteres alfabéticos con acentos, ñ y espacios'),
 
-    Array('alumnograduacion', 'alumnograduacion_titulacion', 145, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
-    Array('alumnograduacion', 'alumnograduacion_titulacion', 146, 'SEARCH', 'Búsqueda por titulacion válida', true, 'Se encuentra usuario por titulacion válida'),
-    Array('alumnograduacion', 'alumnograduacion_titulacion', 147, 'SEARCH', 'Búsqueda por titulacion no válida', 'alumnograduacion_titulacion_format_KO', 'Debe seleccionar una opción válida: GREI, GRIA, MEI, MIA, PCEO'),
+    Array('alumnograduacion', 'alumnograduacion_titulacion', 150, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_titulacion', 151, 'SEARCH', 'Búsqueda por titulacion válida', true, 'Se encuentra usuario por titulacion válida'),
+    Array('alumnograduacion', 'alumnograduacion_titulacion', 152, 'SEARCH', 'Búsqueda por titulacion no válida', 'alumnograduacion_titulacion_format_KO', 'Debe seleccionar una opción válida: GREI, GRIA, MEI, MIA, PCEO'),
 
     Array('alumnograduacion', 'alumnograduacion_dni', 148, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
     Array('alumnograduacion', 'alumnograduacion_dni', 149, 'SEARCH', 'Búsqueda por DNI exacto', true, 'Se encuentra el usuario por DNI exacto'),
@@ -208,12 +208,11 @@ let alumnograduacion_def_tests = Array(
     Array('alumnograduacion', 'alumnograduacion_email', 159, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
     Array('alumnograduacion', 'alumnograduacion_email', 160, 'SEARCH', 'Búsqueda por email exacto', true, 'Se encuentra el usuario por email exacto'),
     Array('alumnograduacion', 'alumnograduacion_email', 161, 'SEARCH', 'Búsqueda por email parcial', true, 'Se encuentran usuarios por coincidencia parcial'),
-    Array('alumnograduacion', 'alumnograduacion_email', 162, 'SEARCH', 'Búsqueda con formato incorrecto', 'alumnograduacion_email_format_KO', 'El correo electrónico debe tener un formato válido'),
 
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 163, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 164, 'SEARCH', 'Búsqueda por nombre de foto exacto', true, 'Se encuentra la foto por nombre exacto'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 165, 'SEARCH', 'Búsqueda por nombre de foto parcial', true, 'Se encuentran fotos por coincidencia parcial'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 166, 'SEARCH', 'Búsqueda con caracteres no permitidos', 'alumnograduacion_fotoacto_invalid_characters_KO', 'Solo puede contener caracteres alfabéticos sin acentos ni ñ ni espacios y punto')
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 162, 'SEARCH', 'Búsqueda vacía', true, 'Se permite búsqueda vacía'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 163, 'SEARCH', 'Búsqueda por nombre de foto exacto', true, 'Se encuentra la foto por nombre exacto'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 164, 'SEARCH', 'Búsqueda por nombre de foto parcial', true, 'Se encuentran fotos por coincidencia parcial'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 165, 'SEARCH', 'Búsqueda con caracteres no permitidos', 'alumnograduacion_fotoacto_invalid_characters_KO', 'Solo puede contener caracteres alfabéticos sin acentos ni ñ ni espacios y punto')
 
    );
 
@@ -388,22 +387,22 @@ let alumnograduacion_tests_fields = Array(
     Array('alumnograduacion','alumnograduacion_fotoacto',136,136,'EDIT',[{alumnograduacion_fotoacto:'imagen'}],'alumnograduacion_fotoacto_no_extension_KO'),
     
     // SEARCH
-    Array('alumnograduacion','alumnograduacion_login',132,132,'SEARCH',[{alumnograduacion_login:''}],true),
-    Array('alumnograduacion','alumnograduacion_login',133,133,'SEARCH',[{alumnograduacion_login:'abcd'}],true),
-    Array('alumnograduacion','alumnograduacion_login',134,134,'SEARCH',[{alumnograduacion_login:'ab'}],true),
-    Array('alumnograduacion','alumnograduacion_login',135,135,'SEARCH',[{alumnograduacion_login:'abcñ'}],'alumnograduacion_login_format_KO'),
+    Array('alumnograduacion','alumnograduacion_login',137,137,'SEARCH',[{alumnograduacion_login:''}],true),
+    Array('alumnograduacion','alumnograduacion_login',138,138,'SEARCH',[{alumnograduacion_login:'abcd'}],true),
+    Array('alumnograduacion','alumnograduacion_login',139,139,'SEARCH',[{alumnograduacion_login:'ab'}],true),
+    Array('alumnograduacion','alumnograduacion_login',140,140,'SEARCH',[{alumnograduacion_login:'abcñ'}],'alumnograduacion_login_format_KO'),
 
-    Array('alumnograduacion','alumnograduacion_password',136,136,'SEARCH',[{alumnograduacion_password:''}],true),
-    Array('alumnograduacion','alumnograduacion_password',137,137,'SEARCH',[{alumnograduacion_password:'abc'}],true),
-    Array('alumnograduacion','alumnograduacion_password',138,138,'SEARCH',[{alumnograduacion_password:'abcñ'}],'alumnograduacion_password_format_KO'),
+    Array('alumnograduacion','alumnograduacion_password',141,141,'SEARCH',[{alumnograduacion_password:''}],true),
+    Array('alumnograduacion','alumnograduacion_password',142,142,'SEARCH',[{alumnograduacion_password:'abc'}],true),
+    Array('alumnograduacion','alumnograduacion_password',143,143,'SEARCH',[{alumnograduacion_password:'abcñ'}],'alumnograduacion_password_format_KO'),
 
-    Array('alumnograduacion','alumnograduacion_nombre',139,139,'SEARCH',[{alumnograduacion_nombre:''}],true),
-    Array('alumnograduacion','alumnograduacion_nombre',140,140,'SEARCH',[{alumnograduacion_nombre:'José'}],true),
-    Array('alumnograduacion','alumnograduacion_nombre',141,141,'SEARCH',[{alumnograduacion_nombre:'abc1'}],'alumnograduacion_nombre_format_KO'),
+    Array('alumnograduacion','alumnograduacion_nombre',144 ,144,'SEARCH',[{alumnograduacion_nombre:''}],true),
+    Array('alumnograduacion','alumnograduacion_nombre',145,145,'SEARCH',[{alumnograduacion_nombre:'José'}],true),
+    Array('alumnograduacion','alumnograduacion_nombre',146,146,'SEARCH',[{alumnograduacion_nombre:'abc1'}],'alumnograduacion_nombre_format_KO'),
 
-    Array('alumnograduacion','alumnograduacion_apellidos',142,142,'SEARCH',[{alumnograduacion_apellidos:''}],true),
-    Array('alumnograduacion','alumnograduacion_apellidos',143,143,'SEARCH',[{alumnograduacion_apellidos:'García'}],true),
-    Array('alumnograduacion','alumnograduacion_apellidos',144,144,'SEARCH',[{alumnograduacion_apellidos:'abc1'}],'alumnograduacion_apellidos_format_KO'),
+    Array('alumnograduacion','alumnograduacion_apellidos',147,147,'SEARCH',[{alumnograduacion_apellidos:''}],true),
+    Array('alumnograduacion','alumnograduacion_apellidos',148,148,'SEARCH',[{alumnograduacion_apellidos:'García'}],true),
+    Array('alumnograduacion','alumnograduacion_apellidos',149,149,'SEARCH',[{alumnograduacion_apellidos:'abc1'}],'alumnograduacion_apellidos_format_KO'),
 
     Array('alumnograduacion','alumnograduacion_titulacion',145,145,'SEARCH',[{alumnograduacion_titulacion:''}],true),
     Array('alumnograduacion','alumnograduacion_titulacion',146,146,'SEARCH',[{alumnograduacion_titulacion:'GREI'}],true),
@@ -412,22 +411,24 @@ let alumnograduacion_tests_fields = Array(
     Array('alumnograduacion','alumnograduacion_dni',148,148,'SEARCH',[{alumnograduacion_dni:''}],true),
     Array('alumnograduacion','alumnograduacion_dni',149,149,'SEARCH',[{alumnograduacion_dni:'12345678A'}],true),
     Array('alumnograduacion','alumnograduacion_dni',150,150,'SEARCH',[{alumnograduacion_dni:'1234567A'}],true),
+    Array('alumnograduacion', 'alumnograduacion_dni', 151, 151, 'SEARCH', [{alumnograduacion_dni:'12345672aaa34D'}],true, 'alumnograduacion_dni_format_KO'),
 
-    Array('alumnograduacion','alumnograduacion_telefono',150,152,'SEARCH',[{alumnograduacion_telefono:''}],true),
-    Array('alumnograduacion','alumnograduacion_telefono',151,153,'SEARCH',[{alumnograduacion_telefono:'123456789'}], 'alumnograduacion_telefono_format_KO'),
-    Array('alumnograduacion','alumnograduacion_telefono',153,155,'SEARCH',[{alumnograduacion_telefono:'12345678A'}],'alumnograduacion_telefono_format_KO'),
+    Array('alumnograduacion','alumnograduacion_telefono',152,152,'SEARCH',[{alumnograduacion_telefono:''}],true),
+    Array('alumnograduacion','alumnograduacion_telefono',153,153,'SEARCH',[{alumnograduacion_telefono:'123456789'}],true),
+    Array('alumnograduacion', 'alumnograduacion_telefono', 154, 154, 'SEARCH', [{alumnograduacion_telefono:'98162'}], true),
+    Array('alumnograduacion','alumnograduacion_telefono',155,155,'SEARCH',[{alumnograduacion_telefono:'12345678A'}],'alumnograduacion_telefono_format_KO'),
 
-    Array('alumnograduacion','alumnograduacion_direccion',154,156,'SEARCH',[{alumnograduacion_direccion:''}],true),
-    Array('alumnograduacion','alumnograduacion_direccion',155,157,'SEARCH',[{alumnograduacion_direccion:'Calle Mayor'}],true),
-    Array('alumnograduacion','alumnograduacion_direccion',156,158,'SEARCH',[{alumnograduacion_direccion:'@#'}],'alumnograduacion_direccion_format_KO'),
+    Array('alumnograduacion','alumnograduacion_direccion',156,156,'SEARCH',[{alumnograduacion_direccion:''}],true),
+    Array('alumnograduacion','alumnograduacion_direccion',157,157,'SEARCH',[{alumnograduacion_direccion:'Calle Mayor'}],true),
+    Array('alumnograduacion','alumnograduacion_direccion',158,158,'SEARCH',[{alumnograduacion_direccion:'@#'}],'alumnograduacion_direccion_format_KO'),
 
-    Array('alumnograduacion','alumnograduacion_email',157,159,'SEARCH',[{alumnograduacion_email:''}],true),
-    Array('alumnograduacion','alumnograduacion_email',158,160,'SEARCH',[{alumnograduacion_email:'usuario@dominio.com'}],true),
-    Array('alumnograduacion','alumnograduacion_email',159,162,'SEARCH',[{alumnograduacion_email:'usuario@dominio'}],'alumnograduacion_email_format_KO'),
+    Array('alumnograduacion','alumnograduacion_email',159,159,'SEARCH',[{alumnograduacion_email:''}],true),
+    Array('alumnograduacion','alumnograduacion_email',160,160,'SEARCH',[{alumnograduacion_email:'usuario@dominio.com'}],true),
+    Array('alumnograduacion','alumnograduacion_email',161,161,'SEARCH',[{alumnograduacion_email:'usuario@dominio'}],true),
 
-    Array('alumnograduacion','alumnograduacion_fotoacto',160,163,'SEARCH',[{alumnograduacion_fotoacto:''}],true),
-    Array('alumnograduacion','alumnograduacion_fotoacto',161,164,'SEARCH',[{alumnograduacion_fotoacto:'foto.jpg'}],true),
-    Array('alumnograduacion','alumnograduacion_fotoacto',162,165,'SEARCH',[{alumnograduacion_fotoacto:'imagen.png'}],true),
-    Array('alumnograduacion','alumnograduacion_fotoacto',163,166,'SEARCH',[{alumnograduacion_fotoacto:'mi foto.jpg'}],'alumnograduacion_fotoacto_spaces_KO')
+    Array('alumnograduacion','alumnograduacion_fotoacto',162,162,'SEARCH',[{alumnograduacion_fotoacto:''}],true),
+    Array('alumnograduacion','alumnograduacion_fotoacto',163,163,'SEARCH',[{alumnograduacion_fotoacto:'foto.jpg'}],true),
+    Array('alumnograduacion','alumnograduacion_fotoacto',164,164,'SEARCH',[{alumnograduacion_fotoacto:'.jpg'}],true),
+    Array('alumnograduacion','alumnograduacion_fotoacto',165,165,'SEARCH',[{alumnograduacion_fotoacto:'mi@#~foto.jpg'}],'alumnograduacion_fotoacto_invalid_characters_KO')
 );
 
