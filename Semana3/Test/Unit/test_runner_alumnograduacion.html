@@ -32,8 +32,7 @@
             }
             let entidad = new alumnograduacion('alumnograduacion_dni');
             let results = [];
-            let testArray = window.alumnograduacion_tests_fields || window.alumnograduacion_def_tests;
-            for (let test of testArray) {
+            for (let test of window.alumnograduacion_tests_fields) {
                 let [entidadName, field, id, num, op, values, expected] = test;
                 let fieldName = Object.keys(values[0])[0];
                 let fieldValue = values[0][fieldName];
