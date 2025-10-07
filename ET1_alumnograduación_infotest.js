@@ -320,6 +320,7 @@ let alumnograduacion_tests_fields = Array(
     Array('alumnograduacion','alumnograduacion_email',88,88,'ADD',[{alumnograduacion_email:'a@b.c'}],true),
     Array('alumnograduacion','alumnograduacion_email',89,89,'ADD',[{alumnograduacion_email:'usuariomuylargoquesuperaloslimitesdecaracterespermitidosparaelemail@b.co'}],true),
 
+    // Falta comprobar con tipo mime
     Array('alumnograduacion','alumnograduacion_fotoacto',90,90,'ADD',[{alumnograduacion_fotoacto:''}],true),
     Array('alumnograduacion','alumnograduacion_fotoacto',91,91,'ADD',[{alumnograduacion_fotoacto:'foto.jpg'}],true),
     Array('alumnograduacion','alumnograduacion_fotoacto',92,92,'ADD',[{alumnograduacion_fotoacto:'imagen.png'}],true),
