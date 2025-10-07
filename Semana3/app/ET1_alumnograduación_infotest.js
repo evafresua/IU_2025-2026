@@ -1,5 +1,4 @@
-// Archivo actualizado: 2025-10-05 15:30 - Notación Array() corregida para compatibilidad
-// Versión: 1.1 - TypeError fixed
+
 let alumnograduacion_def_tests = Array(
     // ADD
     Array('alumnograduacion', 'alumnograduacion_login', 1,   'ADD', 'Tamaño < 4', 'alumnograduacion_login_min_size_KO', 'El tamaño debe ser como min 4'),
@@ -111,9 +110,9 @@ let alumnograduacion_def_tests = Array(
     //Tipos mime permitidos: image/jpeg, image/png
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 90, 'ADD', 'Foto vacía válida', true, 'Campo opcional'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 91, 'ADD', 'Foto con extensión jpg válida', true, 'Éxito'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 92, 'ADD', 'Foto con extensión png válida', true, 'Éxito'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 92, 'ADD', 'Foto con caracteres invalidos', 'alumnograduacion_fotoacto_invalid_characters_KO', 'Caracter inválido'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 93, 'ADD', 'Foto con espacios inválida', 'alumnograduacion_fotoacto_spaces_KO', 'No puede contener espacios'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 94, 'ADD', 'Foto sin extensión inválida', 'alumnograduacion_fotoacto_no_extension_KO', 'Debe incluir extensión válida'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 94, 'ADD', 'Foto sin extensión válida', 'alumnograduacion_fotoacto_no_extension_KO', 'Debe incluir extensión válida'),
 
     // EDIT
     Array('alumnograduacion', 'alumnograduacion_login', 95, 'EDIT', 'Tamaño < 4', 'alumnograduacion_login_too_short_KO', 'El tamaño debe ser como min 4'),
@@ -165,7 +164,7 @@ let alumnograduacion_def_tests = Array(
     // Tipos mime permitidos: image/jpeg, image/png
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 132, 'EDIT', 'Foto vacía válida', true, 'Campo opcional'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 133, 'EDIT', 'Foto con extensión jpg válida', true, 'Éxito'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 134, 'EDIT', 'Foto con extensión png válida', true, 'Éxito'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 134, 'EDIT', 'Foto con caracteres no válidos', 'alumnograduacion_fotoacto_invalid_characters_KO', 'Caracteres invalidos'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 135, 'EDIT', 'Foto con espacios inválida', 'alumnograduacion_fotoacto_invalid_spaces_KO', 'No puede contener espacios'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 136, 'EDIT', 'Foto sin extensión inválida', 'alumnograduacion_fotoacto_invalid_no_extension_KO', 'Debe incluir extensión válida'),
 
@@ -327,7 +326,7 @@ let alumnograduacion_tests_fields = Array(
 
     Array('alumnograduacion','alumnograduacion_fotoacto',90,90,'ADD',[{alumnograduacion_fotoacto:''}],true),
     Array('alumnograduacion','alumnograduacion_fotoacto',91,91,'ADD',[{alumnograduacion_fotoacto:'foto.jpg'}],true),
-    Array('alumnograduacion','alumnograduacion_fotoacto',92,92,'ADD',[{alumnograduacion_fotoacto:'imagen.png'}],true),
+    Array('alumnograduacion','alumnograduacion_fotoacto',92,92,'ADD',[{alumnograduacion_fotoacto:'#@~kn.jpg'}],'alumnograduacion_fotoacto_invalid_characters_KO'),
     Array('alumnograduacion','alumnograduacion_fotoacto',93,93,'ADD',[{alumnograduacion_fotoacto:'mi foto.jpg'}],'alumnograduacion_fotoacto_spaces_KO'),
     Array('alumnograduacion','alumnograduacion_fotoacto',94,94,'ADD',[{alumnograduacion_fotoacto:'imagen'}],'alumnograduacion_fotoacto_no_extension_KO'),
 
@@ -382,7 +381,7 @@ let alumnograduacion_tests_fields = Array(
     // Tipos mime
     Array('alumnograduacion','alumnograduacion_fotoacto',132,132,'EDIT',[{alumnograduacion_fotoacto:''}],true),
     Array('alumnograduacion','alumnograduacion_fotoacto',133,133,'EDIT',[{alumnograduacion_fotoacto:'foto.jpg'}],true),
-    Array('alumnograduacion','alumnograduacion_fotoacto',134,134,'EDIT',[{alumnograduacion_fotoacto:'imagen.png'}],true),
+    Array('alumnograduacion','alumnograduacion_fotoacto',134,134,'ADD',[{alumnograduacion_fotoacto:'#@~kn.jpg'}],'alumnograduacion_fotoacto_invalid_characters_KO'),
     Array('alumnograduacion','alumnograduacion_fotoacto',135,135,'EDIT',[{alumnograduacion_fotoacto:'mi foto.jpg'}],'alumnograduacion_fotoacto_spaces_KO'),
     Array('alumnograduacion','alumnograduacion_fotoacto',136,136,'EDIT',[{alumnograduacion_fotoacto:'imagen'}],'alumnograduacion_fotoacto_no_extension_KO'),
     
