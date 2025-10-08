@@ -167,6 +167,174 @@ class persona extends Validations{
 		
 		@param 
 		@return
+			{string} Error code of field value (fieldname_validationfunction_KO) 
+			or
+			{bool} true due the field value is correct
+
+	*/
+	ADD_apellidos_persona_validation(){
+		
+		if (!(this.min_size('apellidos_persona',4))){
+			this.dom.mostrar_error_campo('apellidos_persona','apellidos_persona_min_size_KO');
+			return "apellidos_persona_min_size_KO";
+		}
+		if (!(this.max_size('apellidos_persona',30))){
+			this.dom.mostrar_error_campo('apellidos_persona','apellidos_persona_max_size_KO');
+			return "apellidos_persona_max_size_KO";
+		}
+		// allowed format aA to zZ letter and spaces
+		if (!(this.format('apellidos_persona', '^[A-Za-z ]*$'))){
+			this.dom.mostrar_error_campo('apellidos_persona','apellidos_persona_format_KO');
+			return "apellidos_persona_format_KO";
+		}
+		this.dom.mostrar_exito_campo('apellidos_persona');
+		return true;
+	}
+
+	/**
+		
+		@param 
+		@return
+			{string} Error code of field value (fieldname_validationfunction_KO) 
+			or
+			{bool} true due the field value is correct
+
+	*/
+	ADD_fechanacimiento_persona_validation(){
+		
+		if (!(this.min_size('fechaNacimiento_persona',8))){
+			this.dom.mostrar_error_campo('fechaNacimiento_persona','fechaNacimiento_persona_min_size_KO');
+			return "fechaNacimiento_persona_min_size_KO";
+		}
+		if (!(this.max_size('fechaNacimiento_persona',10))){
+			this.dom.mostrar_error_campo('fechaNacimiento_persona','fechaNacimiento_persona_max_size_KO');
+			return "fechaNacimiento_persona_max_size_KO";
+		}
+		// Date format DD/MM/YYYY or DD-MM-YYYY
+		if (!(this.format('fechaNacimiento_persona', '^[0-9]{2}[/-][0-9]{2}[/-][0-9]{4}$'))){
+			this.dom.mostrar_error_campo('fechaNacimiento_persona','fechaNacimiento_persona_format_KO');
+			return "fechaNacimiento_persona_format_KO";
+		}
+		this.dom.mostrar_exito_campo('fechaNacimiento_persona');
+		return true;
+	}
+
+	/**
+		
+		@param 
+		@return
+			{string} Error code of field value (fieldname_validationfunction_KO) 
+			or
+			{bool} true due the field value is correct
+
+	*/
+	ADD_direccion_persona_validation(){
+		
+		if (!(this.min_size('direccion_persona',10))){
+			this.dom.mostrar_error_campo('direccion_persona','direccion_persona_min_size_KO');
+			return "direccion_persona_min_size_KO";
+		}
+		if (!(this.max_size('direccion_persona',100))){
+			this.dom.mostrar_error_campo('direccion_persona','direccion_persona_max_size_KO');
+			return "direccion_persona_max_size_KO";
+		}
+		// allowed format letters, numbers, spaces, commas and dots
+		if (!(this.format('direccion_persona', '^[A-Za-z0-9 ,.]*$'))){
+			this.dom.mostrar_error_campo('direccion_persona','direccion_persona_format_KO');
+			return "direccion_persona_format_KO";
+		}
+		this.dom.mostrar_exito_campo('direccion_persona');
+		return true;
+	}
+
+	/**
+		
+		@param 
+		@return
+			{string} Error code of field value (fieldname_validationfunction_KO) 
+			or
+			{bool} true due the field value is correct
+
+	*/
+	ADD_telefono_persona_validation(){
+		
+		if (!(this.min_size('telefono_persona',9))){
+			this.dom.mostrar_error_campo('telefono_persona','telefono_persona_min_size_KO');
+			return "telefono_persona_min_size_KO";
+		}
+		if (!(this.max_size('telefono_persona',15))){
+			this.dom.mostrar_error_campo('telefono_persona','telefono_persona_max_size_KO');
+			return "telefono_persona_max_size_KO";
+		}
+		// Phone format (optional + followed by digits)
+		if (!(this.format('telefono_persona', '^(\\+?[0-9])+$'))){
+			this.dom.mostrar_error_campo('telefono_persona','telefono_persona_format_KO');
+			return "telefono_persona_format_KO";
+		}
+		this.dom.mostrar_exito_campo('telefono_persona');
+		return true;
+	}
+
+	/**
+		
+		@param 
+		@return
+			{string} Error code of field value (fieldname_validationfunction_KO) 
+			or
+			{bool} true due the field value is correct
+
+	*/
+	ADD_email_persona_validation(){
+		
+		if (!(this.min_size('email_persona',5))){
+			this.dom.mostrar_error_campo('email_persona','email_persona_min_size_KO');
+			return "email_persona_min_size_KO";
+		}
+		if (!(this.max_size('email_persona',50))){
+			this.dom.mostrar_error_campo('email_persona','email_persona_max_size_KO');
+			return "email_persona_max_size_KO";
+		}
+		// Email format
+		if (!(this.format('email_persona', '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'))){
+			this.dom.mostrar_error_campo('email_persona','email_persona_format_KO');
+			return "email_persona_format_KO";
+		}
+		this.dom.mostrar_exito_campo('email_persona');
+		return true;
+	}
+
+	/**
+		
+		@param 
+		@return
+			{string} Error code of field value (fieldname_validationfunction_KO) 
+			or
+			{bool} true due the field value is correct
+
+	*/
+	ADD_foto_persona_validation(){
+		
+		if (!(this.min_size('foto_persona',1))){
+			this.dom.mostrar_error_campo('foto_persona','foto_persona_min_size_KO');
+			return "foto_persona_min_size_KO";
+		}
+		if (!(this.max_size('foto_persona',255))){
+			this.dom.mostrar_error_campo('foto_persona','foto_persona_max_size_KO');
+			return "foto_persona_max_size_KO";
+		}
+		// URL or filename format
+		if (!(this.format('foto_persona', '^[a-zA-Z0-9._/-]+\\.(jpg|jpeg|png|gif)$'))){
+			this.dom.mostrar_error_campo('foto_persona','foto_persona_format_KO');
+			return "foto_persona_format_KO";
+		}
+		this.dom.mostrar_exito_campo('foto_persona');
+		return true;
+	}
+
+	/**
+		
+		@param 
+		@return
 			{bool} true if all field validations are correct or false if any field validation is false
 
 	*/
@@ -174,7 +342,13 @@ class persona extends Validations{
 
 		let result = (
 					(this.ADD_dni_validation()) &
-					(this.ADD_nombre_persona_validation())
+					(this.ADD_nombre_persona_validation()) &
+					(this.ADD_apellidos_persona_validation()) &
+					(this.ADD_fechanacimiento_persona_validation()) &
+					(this.ADD_direccion_persona_validation()) &
+					(this.ADD_telefono_persona_validation()) &
+					(this.ADD_email_persona_validation()) &
+					(this.ADD_foto_persona_validation()) &
 					(this.ADD_nuevo_foto_persona_validation())
 					)
 		
@@ -214,6 +388,129 @@ class persona extends Validations{
 
 
 	}
+
+	EDIT_dni_validation(){
+		return this.ADD_dni_validation();
+	}
+
+	EDIT_apellidos_persona_validation(){
+		return this.ADD_apellidos_persona_validation();
+	}
+
+	EDIT_fechanacimiento_persona_validation(){
+		return this.ADD_fechanacimiento_persona_validation();
+	}
+
+	EDIT_direccion_persona_validation(){
+		return this.ADD_direccion_persona_validation();
+	}
+
+	EDIT_telefono_persona_validation(){
+		return this.ADD_telefono_persona_validation();
+	}
+
+	EDIT_email_persona_validation(){
+		return this.ADD_email_persona_validation();
+	}
+
+	EDIT_foto_persona_validation(){
+		return this.ADD_foto_persona_validation();
+	}
+
+	/**
+		
+		@param 
+		@return
+			{bool} true if all field validations are correct or false if any field validation is false
+
+	*/
+	EDIT_submit_persona(){
+
+		let result = (
+					(this.EDIT_dni_validation()) &
+					(this.EDIT_nombre_persona_validation()) &
+					(this.EDIT_apellidos_persona_validation()) &
+					(this.EDIT_fechanacimiento_persona_validation()) &
+					(this.EDIT_direccion_persona_validation()) &
+					(this.EDIT_telefono_persona_validation()) &
+					(this.EDIT_email_persona_validation()) &
+					(this.EDIT_foto_persona_validation()) &
+					(this.EDIT_nuevo_foto_persona_validation())
+					)
+		
+		result = Boolean(result);
+		
+		return result;	
+
+
+	}
+
+	/**********************************************************************************************
+		fields validations for SEARCH
+	***********************************************************************************************/
+
+	SEARCH_submit_persona(){
+		// Para búsquedas, generalmente no se requieren validaciones estrictas
+		return true;
+	}
+
+	SEARCH_dni_validation(){
+		// Para búsquedas, permitir campos vacíos o validación menos estricta
+		let dni = document.getElementById('dni').value;
+		if (dni === '') return true; // Campo vacío permitido en búsquedas
+		return this.ADD_dni_validation();
+	}
+
+	SEARCH_nombre_persona_validation(){
+		let nombre = document.getElementById('nombre_persona').value;
+		if (nombre === '') return true; // Campo vacío permitido en búsquedas
+		return this.ADD_nombre_persona_validation();
+	}
+
+	SEARCH_apellidos_persona_validation(){
+		let apellidos = document.getElementById('apellidos_persona').value;
+		if (apellidos === '') return true; // Campo vacío permitido en búsquedas
+		return this.ADD_apellidos_persona_validation();
+	}
+
+	SEARCH_fechanacimiento_persona_validation(){
+		let fecha = document.getElementById('fechaNacimiento_persona').value;
+		if (fecha === '') return true; // Campo vacío permitido en búsquedas
+		return this.ADD_fechanacimiento_persona_validation();
+	}
+
+	SEARCH_direccion_persona_validation(){
+		let direccion = document.getElementById('direccion_persona').value;
+		if (direccion === '') return true; // Campo vacío permitido en búsquedas
+		return this.ADD_direccion_persona_validation();
+	}
+
+	SEARCH_telefono_persona_validation(){
+		let telefono = document.getElementById('telefono_persona').value;
+		if (telefono === '') return true; // Campo vacío permitido en búsquedas
+		return this.ADD_telefono_persona_validation();
+	}
+
+	SEARCH_email_persona_validation(){
+		let email = document.getElementById('email_persona').value;
+		if (email === '') return true; // Campo vacío permitido en búsquedas
+		return this.ADD_email_persona_validation();
+	}
+
+	SEARCH_foto_persona_validation(){
+		let foto = document.getElementById('foto_persona').value;
+		if (foto === '') return true; // Campo vacío permitido en búsquedas
+		return this.ADD_foto_persona_validation();
+	}
+
+	SEARCH_nuevo_foto_persona_validation(){
+		// En búsquedas, este campo generalmente no se usa
+		return true;
+	}
+
+	/**********************************************************************************************
+		Custom validation methods
+	***********************************************************************************************/
 
 	/**
 	 * 
