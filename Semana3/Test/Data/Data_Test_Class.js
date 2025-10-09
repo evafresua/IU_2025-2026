@@ -6,7 +6,6 @@ class Data_Test {
      */
     constructor(entidad){
 
-        
         this.actions = ["ADD","EDIT","SEARCH"]
 
         // se crea la entidad indicada en modo test
@@ -87,7 +86,7 @@ class Data_Test {
 
             // creo objeto html sino tengo cargado el formulario (para crear cada elemento dinamicamente dentro del form)           
             
-            //meto valor en objeto (esto depende del tipo de elemento de formulario)
+             //meto valor en objeto (esto depende del tipo de elemento de formulario)
             for (var j=0;j<pruebas[i][5].length;j++){
 
                 for (var clave in pruebas[i][5][j]){
@@ -99,6 +98,7 @@ class Data_Test {
                 }
 
             }
+
            
 
             //llamo a la funcion de validacion del campo según su accion
@@ -167,7 +167,7 @@ class Data_Test {
             resultadopruebas.NumDef = pruebas[i][2];
             resultadopruebas.NumPrueba = pruebas[i][3];
             resultadopruebas.accion = pruebas[i][4];
-            //resultadopruebas.descripcion = pruebas[i][5];
+            //resultadopruebas.valorprueba = pruebas[i][5];
             
             
 
@@ -212,8 +212,6 @@ class Data_Test {
 
                 // Set your input `files` to the file list
                 document.getElementById(resultadopruebas.campo).files = fileList;
-
-                
             }
            
                     
@@ -265,8 +263,8 @@ class Data_Test {
 
         var salidapruebasnofile = this.data_test_data_nofile();
          // se invoca la muestra del resultado de las pruebas
-        let marcados =	{
-					pruebastatus: {value:'INCORRECTO', style:'background-color: red'}
+        let marcados =  {
+                    pruebastatus: {value:'INCORRECTO', style:'background-color: red'}
         };
         
         this.dom.showData('IU_Test_result_nofile', salidapruebasnofile, marcados);
