@@ -269,7 +269,7 @@ let alumnograduacion_tests_fields = Array(
     Array('alumnograduacion','alumnograduacion_email',34,34,'ADD',[{alumnograduacion_email:'a@b'}],'alumnograduacion_email_min_size_KO'),
     Array('alumnograduacion','alumnograduacion_email',35,35,'ADD',[{alumnograduacion_email:'usuariomuylargoquesuperaloslimitesdecaracterespermitidosparaelemail@dominio.com'}],'alumnograduacion_email_max_size_KO'),
     Array('alumnograduacion','alumnograduacion_email',36,36,'ADD',[{alumnograduacion_email:'usuario@dominio'}],'alumnograduacion_email_format_KO'),
-    Array('alumnograduacion', 'alumnograduacion_email', 37, 37 'ADD', [{alumnograduacion_email:'#######mmmm@drtg.nmm'}], 'alumnograduacion_email_characters_KO'),
+    Array('alumnograduacion', 'alumnograduacion_email', 37, 37, 'ADD', [{alumnograduacion_email:'#######mmmm@drtg.nmm'}], 'alumnograduacion_email_characters_KO'),
     Array('alumnograduacion','alumnograduacion_email',38,38,'ADD',[{alumnograduacion_email:'usuario@dominio.com'}],true),
 
     Array('alumnograduacion','alumnograduacion_login',38,38,'ADD',[{alumnograduacion_login:'    '}],'alumnograduacion_login_only_spaces_KO'),
