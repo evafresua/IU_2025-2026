@@ -1,0 +1,205 @@
+{
+  "main": {
+    "id": "9bf7126435b80c1a",
+    "type": "split",
+    "children": [
+      {
+        "id": "1a910308b4b50b36",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8df93c70c47c3b73",
+            "type": "leaf",
+            "state": {
+              "type": "mindmapview",
+              "state": {
+                "file": "Clase 30 oct 2025 (Memoria)-mindmap.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Clase 30 oct 2025 (Memoria)-mindmap"
+            }
+          },
+          {
+            "id": "6349d2c5e04e07bc",
+            "type": "leaf",
+            "state": {
+              "type": "mindmapview",
+              "state": {
+                "file": "Clase 30 oct 2025 (Memoria)-mindmap.md"
+              },
+              "icon": "blocks",
+              "title": "Clase 30 oct 2025 (Memoria)-mindmap"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "77f7d448b3656e5b",
+    "type": "split",
+    "children": [
+      {
+        "id": "a276367dde527c1c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "31bcd353e702ee41",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a08b3f4f6dff3d67",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2a6871629201638a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "5b7d2587a9be602d",
+    "type": "split",
+    "children": [
+      {
+        "id": "cdb1bb4f8a386c82",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "928fe48812320702",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "20251023/Modelo de procesamiento.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Modelo de procesamiento"
+            }
+          },
+          {
+            "id": "49b443a6265e3b53",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "20251023/Modelo de procesamiento.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Modelo de procesamiento"
+            }
+          },
+          {
+            "id": "3a36cf453b605129",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "fab2da69bcb5dbf1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "20251023/Modelo de procesamiento.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Modelo de procesamiento"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "audio-recorder:Start/stop recording": false
+    }
+  },
+  "active": "6349d2c5e04e07bc",
+  "lastOpenFiles": [
+    "Clase 30 oct 2025 (Memoria)-mindmap.pdf",
+    "Clase 30 oct 2025 (Memoria).md",
+    "Clase 23 oct 2025 (Factor humano).md",
+    "Clase 30 oct 2025 (Memoria)-mindmap.md",
+    "Inicio.md",
+    "ET2/README.md",
+    "Tareas semanales/Semana 7 (20 Octubre - 26 Octubre).md",
+    "ET2/DefinicionEntrega25-26_ET2.md",
+    "ET2",
+    "Tareas semanales",
+    "20251023/Modelo procesamiento sentidos.md",
+    "20251023/Modelo mental.md",
+    "20251023/Modelo memoria.md",
+    "20251023/Modelo de procesamiento-mindmap.md",
+    "20251023/Modelo de procesamiento.md",
+    "20251023"
+  ]
+}

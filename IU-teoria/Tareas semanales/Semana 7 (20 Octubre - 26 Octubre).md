@@ -1,0 +1,5 @@
+- [ ] CSS: Etiquetas semanticas HTML5, inclusion css en html, reglas de estilo, selectores, atributos
+- [ ] Css: Modelo de cajas, posicionamiento, overflow,
+- [ ] Internacionalización, aplicación de localización sobre el repositorio (idiomas ES y EN)
+- [ ] **Trabajo sobre la ET2 (9 horas)**
+	- [ ] Colocar el soporte multiidioma sobre el interfaz y la clase alumnograduacion implementada hasta el momento, para los idiomas español e inglés.

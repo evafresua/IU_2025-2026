@@ -1,0 +1,3 @@
+- [[Clase 23 oct 2025 (Factor humano)]]
+- [[Clase 30 oct 2025 (Memoria)-mindmap]]
+- 
