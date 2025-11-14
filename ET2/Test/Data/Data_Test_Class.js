@@ -85,8 +85,33 @@ class Data_Test {
 
             // recupero el test correspondiente a la prueba que realizo
             var def = this.devolver_def(resultadopruebas.NumDef);
-            resultadopruebas.descripcion = def[4];
-            var tipoelemento = def[2];
+            if (!def){
+                console.warn('Data_Test: definición de test no encontrada para NumDef', resultadopruebas.NumDef, 'entidad', resultadopruebas.entidad, 'campo', resultadopruebas.campo);
+                // marcar la prueba y continuar
+                resultadopruebas.descripcion = '';
+                resultadopruebas.resultadoprueba = 'NO_DEF_FOUND';
+                resultadopruebas.pruebastatus = 'ERROR';
+                resultadaprueba = 'NO_DEF_FOUND';
+                salidapruebas[contadorpruebas] = resultadopruebas;
+                contadorpruebas++;
+                resultadopruebas = 
+                    {   
+                        entidad: '',
+                        campo: '',
+                        NumDef: '',
+                        NumPrueba: '',
+                        descripcion: '',
+                        accion: '',
+                        valorprueba: '',
+                        respuestaesperada: '',
+                        resultadoprueba:'',
+                        pruebastatus:'',
+                        textoidiomaerror:''      
+                    };
+                continue;
+            }
+            resultadopruebas.descripcion = (def[4] !== undefined) ? def[4] : (def[3] || '');
+            var tipoelemento = def[2] || def[3] || null;
 
             // creo objeto html sino tengo cargado el formulario (para crear cada elemento dinamicamente dentro del form)           
             
@@ -115,7 +140,23 @@ class Data_Test {
                             this.rellenarvalorradio(nombrecampo, valorcampo);
                             break;
                         default:
-                            alert('no hay tipo de elemento definido en el test '+resultadopruebas.NumDef);
+                            // Try best-effort: if an element with id exists, attempt to set value
+                            var el = document.getElementById(nombrecampo) || document.getElementById('nuevo_'+nombrecampo);
+                            if (el){
+                                try{
+                                    if (el.tagName == 'TEXTAREA') el.innerText = valorcampo;
+                                    else if (el.type == 'file'){
+                                        // cannot set file value by string — leave as-is
+                                    }
+                                    else el.value = valorcampo;
+                                }catch(e){ /* ignore */ }
+                                console.warn('Data_Test: tipo de elemento no declarado correctamente, usado set-value por fallback para test', resultadopruebas.NumDef);
+                            }else{
+                                console.warn('Data_Test: no hay tipo de elemento definido ni elemento en DOM para el test', resultadopruebas.NumDef);
+                            }
+
+                            // do not throw/alert; mark as incorrect and continue
+                            // resultadoprueba will be resolved by validation call below (may fail)
 
                     }
                     
@@ -215,7 +256,13 @@ class Data_Test {
 
             // recupero el test correspondiente a la prueba que realizo
             var def = this.devolver_def(resultadopruebas.NumDef);
-            resultadopruebas.descripcion = def[3];
+            if (!def){
+                console.warn('Data_Test: definición de test (file) no encontrada para NumDef', resultadopruebas.NumDef);
+                resultadopruebas.descripcion = '';
+            }else{
+                // prefer index 4 (descripcion) if present
+                resultadopruebas.descripcion = (def[4] !== undefined) ? def[4] : (def[3] || '');
+            }
 
             // creo objeto html sino tengo cargado el formulario (para crear cada elemento dinamicamente dentro del form)
              //construyo objeto file y relleno valor para prueba
@@ -238,7 +285,13 @@ class Data_Test {
                 const fileList = dataTransfer.files;
 
                 // Set your input `files` to the file list
-                document.getElementById(resultadopruebas.campo).files = fileList;
+                // prefer the actual file input id convention 'nuevo_<campo>' if present
+                var fileInput = document.getElementById('nuevo_'+resultadopruebas.campo) || document.getElementById(resultadopruebas.campo);
+                if (fileInput){
+                    try{ fileInput.files = fileList; }catch(e){ console.warn('Data_Test: no se pudo asignar files al input para', resultadopruebas.campo, e); }
+                } else {
+                    console.warn('Data_Test: input de fichero no encontrado para campo', resultadopruebas.campo);
+                }
 
                 
             }
@@ -293,34 +346,45 @@ class Data_Test {
 
     data_test_class(){
 
-
         var salidapruebasnofile = this.data_test_data_nofile();
          // se invoca la muestra del resultado de las pruebas
-        let marcados =	{
-					pruebastatus: {value:'INCORRECTO', style:'background-color: red'}
+        let marcados = {
+                    pruebastatus: {value:'INCORRECTO', style:'background-color: red'}
         };
-        
-        
+
         const newWindow = window.open("", "Nueva Ventana", "width=1100,height=800");
-        //newWindow.document.write(salidapruebasnofile);
-        
-        
+
+        // render results into in-page containers first
         this.dom.showData('IU_Test_result_nofile', salidapruebasnofile, marcados);
 
-        newWindow.document.body.innerHTML = document.getElementById('IU_Test_result_nofile').innerHTML;
-        document.getElementById('IU_Test_result_nofile').style.display = 'none';
+        if (newWindow && newWindow.document){
+            try{
+                newWindow.document.body.innerHTML = document.getElementById('IU_Test_result_nofile').innerHTML;
+                document.getElementById('IU_Test_result_nofile').style.display = 'none';
+            }catch(e){
+                console.warn('Data_Test: could not copy nofile results to new window, falling back to in-page display', e);
+                document.getElementById('IU_Test_result_nofile').style.display = 'block';
+            }
+        }else{
+            document.getElementById('IU_Test_result_nofile').style.display = 'block';
+        }
 
-        
         var salidapruebasfile = this.data_test_data_file();
-       
-        // se invoca la muestra del resultado de las pruebas
-        
-        this.dom.showData('IU_Test_result_file', salidapruebasfile, marcados);
-        
-        newWindow.document.body.innerHTML += document.getElementById('IU_Test_result_file').innerHTML;
-        document.getElementById('IU_Test_result_file').style.display = 'none';
 
-        newWindow.document.close();
+        this.dom.showData('IU_Test_result_file', salidapruebasfile, marcados);
+
+        if (newWindow && newWindow.document){
+            try{
+                newWindow.document.body.innerHTML += document.getElementById('IU_Test_result_file').innerHTML;
+                document.getElementById('IU_Test_result_file').style.display = 'none';
+                newWindow.document.close();
+            }catch(e){
+                console.warn('Data_Test: could not copy file results to new window, keeping in-page display', e);
+                document.getElementById('IU_Test_result_file').style.display = 'block';
+            }
+        }else{
+            document.getElementById('IU_Test_result_file').style.display = 'block';
+        }
 
         return true;
 
@@ -448,12 +512,20 @@ class Data_Test {
 
 
     devolver_def(num_def){
-
+        // primary lookup: match by the documented position [3] (numero_test)
         for (let i=0;i<this.array_def_tests.length;i++){
-            if (this.array_def_tests[i][3] == num_def){
+            if (this.array_def_tests[i] && this.array_def_tests[i][3] == num_def){
                 return this.array_def_tests[i];
             }
         }
+        // fallback: try to find num_def anywhere inside a definition entry (tolerant, for malformed data)
+        for (let i=0;i<this.array_def_tests.length;i++){
+            if (!this.array_def_tests[i]) continue;
+            for (let j=0;j<this.array_def_tests[i].length;j++){
+                if (this.array_def_tests[i][j] == num_def) return this.array_def_tests[i];
+            }
+        }
+        return null;
     }
     
     devolverTraduccionError(codigoerror){

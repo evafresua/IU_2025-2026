@@ -67,8 +67,13 @@ ubicacion.prototype.createForm_ADD = function(){
         if (this.dom) this.dom.setFileFieldState(field,'','ADD');
     });
     var form = document.getElementById('form_iu');
+    // onsubmit -> run ADD_submit_ubicacion; action executes ADD()
+    if (this.dom) this.dom.assign_property_value('form_iu','onsubmit','return entidad.ADD_submit_'+this.nombreentidad+'();');
     if (form){ form.action = 'javascript:entidad.ADD();' }
+    // place validations for ADD
+    if (this.dom) this.dom.colocarvalidaciones('form_iu','ADD');
     this.colocarboton('ADD');
+    setLang();
 };
 
 ubicacion.prototype.createForm_SEARCH = function(){
@@ -129,13 +134,44 @@ ubicacion.prototype.createForm_EDIT = function(fila){
     if (!cont) return;
     cont.innerHTML = this.manual_form_creation();
     if (this.dom) this.dom.show_element('Div_IU_form','block');
-    var form = document.getElementById('form_iu'); if (form) form.action = 'javascript:entidad.EDIT();';
+    var form = document.getElementById('form_iu');
+    // onsubmit -> EDIT_submit_ubicacion; action executes EDIT()
+    if (this.dom) this.dom.assign_property_value('form_iu','onsubmit','return entidad.EDIT_submit_'+this.nombreentidad+'();');
+    if (form) form.action = 'javascript:entidad.EDIT();';
     this.rellenarvaloresform(fila);
     ['north','south','east','west'].forEach(dir=>{
         var field = 'site_'+dir+'_photo';
         if (this.dom) this.dom.setFileFieldState(field, (fila?fila[field]:''), 'EDIT');
     });
+    // place validations for EDIT
+    if (this.dom) this.dom.colocarvalidaciones('form_iu','EDIT');
     this.colocarboton('EDIT');
+    setLang();
+};
+
+ubicacion.prototype.createForm_SHOWCURRENT = function(fila){
+    var cont = document.getElementById('contenedor_IU_form') || document.getElementById('IU_form');
+    if (!cont) return;
+    cont.innerHTML = this.manual_form_creation();
+    if (this.dom) this.dom.show_element('Div_IU_form','block');
+
+    // hide new file inputs and show links to existing files if present
+    ['north','south','east','west'].forEach(dir=>{
+        var field = 'site_'+dir+'_photo';
+        if (this.dom) this.dom.hide_element_form('nuevo_'+field);
+        if (fila && fila[field]){
+            this.dom.assign_property_value('link_'+field, 'href', 'http://193.147.87.202/ET2/filesuploaded/files_site_photos/'+fila[field]);
+        }
+    });
+
+    // rellenar valores
+    this.rellenarvaloresform(fila);
+
+    // poner todos los campos readonly
+    if (this.dom) this.dom.colocartodosreadonly('form_iu');
+
+    // no submit for SHOWCURRENT, just close button
+    setLang();
 };
 
 ubicacion.prototype.rellenarvaloresform = function(parametros){

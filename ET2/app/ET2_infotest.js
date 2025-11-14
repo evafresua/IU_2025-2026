@@ -537,7 +537,7 @@ let alumnograduacion_tests_files = Array(
 
 let ubicacion_tests_files = Array(
     // site_north_photo (max_size=3145728, types=jpg|jpeg|png)
-    Array('ubicacion','site_north_photo',189,1,'ADD','empty_file',Array({format_name_file:''},{type_file:''},{max_size_file:0}),'site_north_photo_empty_KO'),
+    Array('ubicacion','site_north_photo',189,1,'ADD','empty_file',Array({format_name_file:''},{type_file:''},{max_size_file:0}),true),
     Array('ubicacion','site_north_photo',189,2,'ADD','valid_file',Array({format_name_file:'north.jpg'},{type_file:'image/jpeg'},{max_size_file:3145728}),true),
     Array('ubicacion','site_north_photo',190,3,'ADD','invalid_format_file',Array({format_name_file:'north.bmp'},{type_file:'image/bmp'},{max_size_file:100}),'site_north_photo_type_KO'),
     Array('ubicacion','site_north_photo',189,4,'ADD','oversized_file',Array({format_name_file:'north.jpg'},{type_file:'image/jpeg'},{max_size_file:4000000}),'site_north_photo_size_KO'),

@@ -1,32 +1,41 @@
 class Unit_Test {
     
     constructor(entidad){
-
-        
-        
         this.nombreentidad = entidad;
 
+        // instantiate DOM helper early so test routines that use it won't fail
+        this.dom = new dom();
+
         this.actions = ["ADD","EDIT","SEARCH"]
-        
+
+        // run the static checks to build the test result payload
         var test_result = this.test_class_and_method_validation();
 
-        this.dom = new dom;
-
-        let marcados =	{
-					existe: {value:false, style:'background-color: red'}
+        let marcados = {
+            existe: {value:false, style:'background-color: red'}
         };
 
+        // Try to open a new window for test results; if popup blocked, fall back
         const newWindow = window.open("", "Nueva Ventana test Unit", "width=1100,height=800");
-        
+
+        // Always render the results into the in-page DIV first
         this.dom.showData('Div_IU_Test', test_result, marcados);
 
-        newWindow.document.body.innerHTML = document.getElementById('Div_IU_Test').innerHTML;
-        document.getElementById('Div_IU_Test').style.display = 'none';
-
-        newWindow.document.close();       
-
-
-
+        if (newWindow && newWindow.document){
+            // If we have a window, copy the content there and hide the in-page DIV
+            try{
+                newWindow.document.body.innerHTML = document.getElementById('Div_IU_Test').innerHTML;
+                document.getElementById('Div_IU_Test').style.display = 'none';
+                newWindow.document.close();
+            }catch(e){
+                // if cross-origin or other issue, keep in-page DIV visible
+                console.warn('Unit_Test: could not populate new window, falling back to in-page display', e);
+                document.getElementById('Div_IU_Test').style.display = 'block';
+            }
+        }else{
+            // popup blocked or failed -> show in-page DIV
+            document.getElementById('Div_IU_Test').style.display = 'block';
+        }
     }
 
 
