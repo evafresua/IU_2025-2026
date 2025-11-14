@@ -141,6 +141,75 @@ class dom extends dom_table {
 		elemento.type = tipo;
 		document.getElementById(idform).append(elemento);
 	}
+
+	/**
+	 * Ajusta la visualización y estado de los campos de fichero siguiendo la especificación:
+	 * - text field: id = <field>
+	 * - file field: id = nuevo_<field>
+	 * - labels: label_<field>, label_nuevo_<field>
+	 * - link: link_<field>
+	 * action: 'ADD'|'EDIT'|'DELETE'|'SHOWCURRENT'|'SEARCH'
+	 */
+	setFileFieldState(field, filename, action){
+		var txtId = field;
+		var fileId = 'nuevo_' + field;
+		var labelId = 'label_' + field;
+		var labelNewId = 'label_nuevo_' + field;
+		var linkId = 'link_' + field;
+
+		var elTxt = document.getElementById(txtId);
+		var elFile = document.getElementById(fileId);
+		var elLabel = document.getElementById(labelId);
+		var elLabelNew = document.getElementById(labelNewId);
+		var elLink = document.getElementById(linkId);
+
+		switch(action){
+			case 'ADD':
+				if (elLabel) elLabel.style.display = 'none';
+				if (elTxt) { elTxt.style.display = 'none'; elTxt.readOnly = false; }
+				if (elLabelNew) elLabelNew.style.display = 'inline';
+				if (elFile) { elFile.style.display = 'inline'; elFile.value = ''; }
+				if (elLink) elLink.style.display = 'none';
+				break;
+			case 'EDIT':
+				if (elLabel) elLabel.style.display = 'inline';
+				if (elTxt) { elTxt.style.display = 'inline'; elTxt.readOnly = true; }
+				if (elLabelNew) elLabelNew.style.display = 'inline';
+				if (elFile) elFile.style.display = 'inline';
+				break;
+			case 'DELETE':
+			case 'SHOWCURRENT':
+				if (elLabel) elLabel.style.display = 'inline';
+				if (elTxt) { elTxt.style.display = 'inline'; elTxt.readOnly = true; }
+				if (elLabelNew) elLabelNew.style.display = 'none';
+				if (elFile) elFile.style.display = 'none';
+				break;
+			case 'SEARCH':
+				if (elLabel) elLabel.style.display = 'inline';
+				if (elTxt) { elTxt.style.display = 'inline'; elTxt.readOnly = false; }
+				if (elLabelNew) elLabelNew.style.display = 'none';
+				if (elFile) elFile.style.display = 'none';
+				break;
+			default:
+				// por defecto mostrar texto y ocultar file
+				if (elLabel) elLabel.style.display = 'inline';
+				if (elTxt) { elTxt.style.display = 'inline'; elTxt.readOnly = false; }
+				if (elLabelNew) elLabelNew.style.display = 'none';
+				if (elFile) elFile.style.display = 'none';
+		}
+
+		// link handling: si hay filename, fijar href y mostrar, si no, ocultar
+		if (elLink){
+			if (filename && String(filename).trim() !== ''){
+				try{
+					var href = 'http://193.147.87.202/ET2/filesuploaded/files_' + field + '/' + encodeURIComponent(String(filename));
+					elLink.href = href;
+					elLink.style.display = 'inline';
+				}catch(e){ elLink.style.display = 'none'; }
+			}
+			else{ elLink.style.display = 'none'; }
+		}
+	}
 	
 
 }

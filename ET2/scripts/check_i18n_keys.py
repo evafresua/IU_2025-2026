@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 
 base = Path('/home/eva/IU_2025-2026/ET2/app')
-file_tests = base / 'ET2_infotest.new.js'
+file_tests = base / 'ET2_infotest.js'
 file_es = base / 'Textos_ES.js'
 file_en = base / 'Textos_EN.js'
 
@@ -15,10 +15,18 @@ strs = list(dict.fromkeys(strs))
 # classify
 candidate_keys = []
 literal_texts = []
+STOPWORDS = set(['ADD','EDIT','SEARCH','input','select','textarea','true','false','Array','new','var','let','const'])
+
 for t in strs:
-    if re.match(r'^[A-Za-z0-9_]+$', t):
+    # ignore empty
+    if not t:
+        literal_texts.append(t)
+        continue
+    # treat likely i18n keys: contain msg_ or end with _KO or start with known entity prefix
+    if t.startswith('msg_') or t.endswith('_KO') or t.startswith('alumnograduacion_') or t.startswith('articulo_') or t.startswith('ubicacion_') or t.startswith('site_') or t.startswith('FicheropdfA') or t.startswith('CodigoA'):
         candidate_keys.append(t)
-    elif t.startswith('msg_') or ('_KO' in t) or t.startswith('alumnograduacion') or t.startswith('FicheropdfA') or t.startswith('site_'):
+    elif re.match(r'^[A-Za-z0-9_]+$', t) and t not in STOPWORDS and '_' in t:
+        # likely a key-like token (has underscore) and not in stopwords
         candidate_keys.append(t)
     else:
         literal_texts.append(t)

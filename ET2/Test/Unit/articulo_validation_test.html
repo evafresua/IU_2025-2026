@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>articulo — validation unit tests</title>
+  <style>body{font-family:system-ui,Arial}pre{background:#f6f8fa;padding:12px;border-radius:6px}</style>
+</head>
+<body>
+  <h2>articulo — validation unit tests</h2>
+  <p>Opens `app/articulo_Class.js`, creates a minimal DOM and mocks for runtime helpers, then runs a few validation cases and prints pass/fail.</p>
+  <div id="contenedor_IU_form"></div>
+  <div id="text_title_page"></div>
+  <pre id="results">Running...</pre>
+
+  <script src="../../app/articulo_Class.js"></script>
+  <script>
+    // Minimal mock classes to satisfy articulo dependencies
+    class Validations {
+      max_size(id, n){
+        var el = document.getElementById(id);
+        if (!el) return true;
+        return String(el.value || '').length <= n;
+      }
+      type_file(id, types){ return true; }
+      max_size_file(id, sz){ return true; }
+    }
+    class ExternalAccess {}
+    class dom {
+      mostrar_error_campo(id,key){
+        var a = document.getElementById('error_'+id);
+        if (a) a.textContent = key;
+      }
+      mostrar_exito_campo(id){
+        var a = document.getElementById('error_'+id);
+        if (a) a.textContent = '';
+      }
+      show_element(){ }
+      setFileFieldState(){ }
+      assign_property_value(){ }
+      colocarvalidaciones(){ }
+      colocarboton(){ }
+    }
+
+    function runTests(){
+      window.entidad = new articulo();
+      // create ADD form
+      entidad.createForm_ADD();
+
+      const results = [];
+      function expectTrue(desc, fn){ try{ const r = fn(); results.push([desc, r===true, r]); }catch(e){ results.push([desc,false,'EXCEPTION:'+e]); }}
+      function expectKO(desc, fn, expected){ try{ const r = fn(); results.push([desc, r===expected, r]); }catch(e){ results.push([desc,false,'EXCEPTION:'+e]); }}
+
+      // AutoresA
+      document.getElementById('AutoresA').value = 'A Baker';
+      expectTrue('AutoresA valid short', ()=> entidad.personalize_AutoresA_ADD());
+      document.getElementById('AutoresA').value = 'x'.repeat(200);
+      expectKO('AutoresA too long', ()=> entidad.personalize_AutoresA_ADD(), 'AutoresA_maxlen_KO');
+
+      // TituloR
+      document.getElementById('TituloR').value = 'Short title';
+      expectTrue('TituloR valid', ()=> entidad.personalize_TituloR_ADD());
+      document.getElementById('TituloR').value = 'x'.repeat(101);
+      expectKO('TituloR too long', ()=> entidad.personalize_TituloR_ADD(), 'TituloR_maxlen_KO');
+
+      // FechaPublicacionR
+      document.getElementById('FechaPublicacionR').value = '2020-12-31';
+      expectTrue('FechaPublicacionR valid', ()=> entidad.personalize_FechaPublicacionR_ADD());
+      document.getElementById('FechaPublicacionR').value = '2020-13-01';
+      expectKO('FechaPublicacionR invalid month', ()=> entidad.personalize_FechaPublicacionR_ADD(), 'FechaPublicacionR_format_KO');
+
+      // EstadoA
+      document.getElementById('EstadoA').value = 'Enviado';
+      expectTrue('EstadoA Enviado', ()=> entidad.personalize_EstadoA_ADD());
+      document.getElementById('EstadoA').value = 'Foo';
+      expectKO('EstadoA invalid', ()=> entidad.personalize_EstadoA_ADD(), 'EstadoA_invalid_KO');
+
+      // VolumenR
+      document.getElementById('VolumenR').value = '1234';
+      expectTrue('VolumenR ok', ()=> entidad.personalize_VolumenR_ADD());
+      document.getElementById('VolumenR').value = '12345';
+      expectKO('VolumenR too long', ()=> entidad.personalize_VolumenR_ADD(), 'VolumenR_maxlen_KO');
+
+      // render results
+      const out = results.map(r => (r[1] ? 'PASS' : 'FAIL') + ' - ' + r[0] + ' => return: ' + JSON.stringify(r[2])).join('\n');
+      document.getElementById('results').textContent = out;
+      console.log(out);
+    }
+
+    // run after load
+    window.addEventListener('load', function(){ setTimeout(runTests, 50); });
+  </script>
+</body>
+</html>
