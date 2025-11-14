@@ -113,7 +113,8 @@ articulo.prototype.createForm_DELETE = function(fila){
     this.rellenarvaloresform(fila);
     // file-field: show text readonly, hide file input
     if (this.dom) this.dom.setFileFieldState('FicheropdfA', (fila?fila.FicheropdfA:''), 'DELETE');
-    // delete action
+    // delete action and onsubmit per ET2 convention
+    if (this.dom) this.dom.assign_property_value('form_iu','onsubmit','return entidad.DELETE_submit_'+this.nombreentidad+'();');
     var form = document.getElementById('form_iu'); if (form) form.action = 'javascript:entidad.DELETE();';
     this.colocarboton('DELETE');
 };

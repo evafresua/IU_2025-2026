@@ -71,6 +71,59 @@ ubicacion.prototype.createForm_ADD = function(){
     this.colocarboton('ADD');
 };
 
+ubicacion.prototype.createForm_SEARCH = function(){
+    var cont = document.getElementById('contenedor_IU_form') || document.getElementById('IU_form');
+    if (!cont) return;
+    cont.innerHTML = this.manual_form_creation();
+    if (this.dom) this.dom.show_element('Div_IU_form','block');
+    // En SEARCH mostrar el campo de texto y ocultar los inputs de fichero
+    ['north','south','east','west'].forEach(dir=>{
+        var field = 'site_'+dir+'_photo';
+        if (this.dom) this.dom.setFileFieldState(field, '', 'SEARCH');
+    });
+    // onsubmit -> SEARCH_submit_ubicacion; action executes SEARCH()
+    var form = document.getElementById('form_iu');
+    if (form) form.action = 'javascript:entidad.SEARCH();';
+    if (this.dom) this.dom.assign_property_value('form_iu','onsubmit','return entidad.SEARCH_submit_'+this.nombreentidad+'();');
+
+    if (this.dom) this.dom.colocarvalidaciones('form_iu','SEARCH');
+    this.colocarboton('SEARCH');
+    setLang();
+};
+
+ubicacion.prototype.createForm_DELETE = function(fila){
+    var cont = document.getElementById('contenedor_IU_form') || document.getElementById('IU_form');
+    if (!cont) return;
+    cont.innerHTML = this.manual_form_creation();
+    if (this.dom) this.dom.show_element('Div_IU_form','block');
+
+    // poner onsubmit y action a DELETE (convencion ET2)
+    if (this.dom) this.dom.assign_property_value('form_iu','onsubmit','return entidad.DELETE_submit_'+this.nombreentidad+'();');
+    var form = document.getElementById('form_iu'); if (form) form.action = 'javascript:entidad.DELETE();';
+
+    // mostrar link a ficheros existentes y ocultar inputs nuevos
+    ['north','south','east','west'].forEach(dir=>{
+        var field = 'site_'+dir+'_photo';
+        // hide the file input
+        if (this.dom) this.dom.hide_element_form('nuevo_'+field);
+        // set link to existing file (if provided)
+        if (fila && fila[field]){
+            this.dom.assign_property_value('link_'+field, 'href', 'http://193.147.87.202/ET2/filesuploaded/files_site_photos/'+fila[field]);
+        }
+    });
+
+    // rellenar valores
+    this.rellenarvaloresform(fila);
+
+    // poner todos los campos readonly
+    this.dom.colocartodosreadonly('form_iu');
+
+    // colocar boton DELETE
+    this.colocarboton('DELETE');
+
+    setLang();
+};
+
 ubicacion.prototype.createForm_EDIT = function(fila){
     var cont = document.getElementById('contenedor_IU_form') || document.getElementById('IU_form');
     if (!cont) return;

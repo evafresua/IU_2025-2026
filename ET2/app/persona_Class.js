@@ -425,7 +425,8 @@ class persona extends EntidadAbstracta{
 		this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
 		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_persona_DELETE');
 
-		// rellenar y action
+		// rellenar, onsubmit y action
+		this.dom.assign_property_value('form_iu','onsubmit','return entidad.DELETE_submit_'+this.nombreentidad+'();');
 		this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
 
 		// poner no visible el campo nuevo_foto_persona (solo se puede ver el nombre de fichero)

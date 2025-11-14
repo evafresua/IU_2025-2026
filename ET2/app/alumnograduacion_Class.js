@@ -13,7 +13,7 @@ class alumnograduacion extends EntidadAbstracta{
 	 */
 	manual_form_creation(){
 		var form_content = `
-			<form action="http://193.147.87.202/procesaform.php" method="POST" enctype="multipart/form-data" onsubmit="return entidad.ADD_submit_persona();">
+			<form id='form_iu' action='' method='POST' enctype='multipart/form-data' class='formulario'>
 
 			<label class="label_dni">dni</label>
 			<input type='text' id='dni' name='dni' onblur=" return entidad.ADD_dni_validation();"></input>
@@ -31,7 +31,7 @@ class alumnograduacion extends EntidadAbstracta{
 			<br>
 			
 			<label class="label_fechaNacimiento_persona">Fecha de Nacimiento</label>
-			<input type='text' id='fechaNacimiento_persona' name='fechaNacimiento_persona'></input>
+			<input type='date' id='fechaNacimiento_persona' name='fechaNacimiento_persona' onblur="return entidad.ADD_fechanacimiento_persona_validation();"></input>
 			<span id="span_error_fechaNacimiento_persona" ><a id="error_fechaNacimiento_persona"></a></span>
 			
 			<br>
@@ -60,12 +60,155 @@ class alumnograduacion extends EntidadAbstracta{
 			<span id="span_error_nuevo_foto_persona"><a id="error_nuevo_foto_persona"></a></span>
 			<br>
 
-			<input id="submit_button" type="submit" value="Submit">
-
 		</form>
 		`;
 		return form_content;
 		
+	}
+
+
+
+	/**
+	 * createForm_ADD: prepare the form for ADD action (used by the UI ADD button)
+	 */
+	createForm_ADD(){
+
+		// limpiar y poner visible el formulario
+		document.getElementById('contenedor_IU_form').innerHTML = this.manual_form_creation();
+		this.dom.show_element('Div_IU_form','block');
+		this.dom.remove_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_alumnograduacion_ADD');
+
+		// poner onsubmit a la comprobacion de ADD de esta entidad
+		this.dom.assign_property_value('form_iu','onsubmit','return entidad.ADD_submit_'+this.nombreentidad+'()');
+
+		// poner action a ejecucion JS de ADD (usa peticionBackGeneral)
+		this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.ADD();');
+
+		// ocultar el campo foto_persona (solo se sube fichero)
+		this.dom.hide_element_form('foto_persona');
+		this.dom.hide_element('link_foto_persona');
+
+		// colocar validaciones y boton
+		this.dom.colocarvalidaciones('form_iu','ADD');
+		this.dom.colocarboton('ADD');
+
+		// set max on fechaNacimiento_persona to today to avoid future dates
+		try{
+			var elFecha = document.getElementById('fechaNacimiento_persona');
+			if (elFecha){ elFecha.max = new Date().toISOString().split('T')[0]; }
+		}catch(e){}
+
+		setLang();
+	}
+
+	createForm_EDIT(fila){
+
+		// limpiar y poner visible el formulario
+		document.getElementById('contenedor_IU_form').innerHTML = this.manual_form_creation();
+		this.dom.show_element('Div_IU_form','block');
+		this.dom.remove_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_alumnograduacion_EDIT');
+
+		// poner onsubmit y action
+		this.dom.assign_property_value('form_iu','onsubmit','return entidad.EDIT_submit_'+this.nombreentidad+'()');
+		this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.EDIT();');
+
+		// rellenar valores
+		this.dom.rellenarvaloresform(fila);
+
+		// file-field UI: show text readonly and file input to allow replacement
+		this.dom.hide_element_form('foto_persona');
+		this.dom.hide_element('link_foto_persona');
+
+		// colocar validaciones
+		this.dom.colocarvalidaciones('form_iu','EDIT');
+
+		// set min/max on fecha input
+		try{
+			var elFecha = document.getElementById('fechaNacimiento_persona');
+			if (elFecha){ elFecha.max = new Date().toISOString().split('T')[0]; elFecha.min = '1900-01-01'; }
+		}catch(e){}
+
+		// colocar boton
+		this.dom.colocarboton('EDIT');
+
+		setLang();
+	}
+
+	createForm_SEARCH(){
+
+		// mostrar y preparar formulario para SEARCH
+		document.getElementById('contenedor_IU_form').innerHTML = this.manual_form_creation();
+		this.dom.show_element('Div_IU_form','block');
+		this.dom.remove_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_alumnograduacion_SEARCH');
+
+		// onsubmit -> SEARCH_submit_* and action -> entidad.SEARCH()
+		this.dom.assign_property_value('form_iu','onsubmit','return entidad.SEARCH_submit_'+this.nombreentidad+'();');
+		this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.SEARCH();');
+
+		// En SEARCH ocultar el input de fichero nuevo y dejar el campo texto para buscar
+		this.dom.hide_element_form('nuevo_foto_persona');
+		this.dom.hide_element('link_foto_persona');
+
+		// colocar validaciones y boton de SEARCH
+		this.dom.colocarvalidaciones('form_iu','SEARCH');
+		this.dom.colocarboton('SEARCH');
+
+		setLang();
+	}
+
+	createForm_DELETE(fila){
+
+		// limpiar y poner visible el formulario
+		document.getElementById('contenedor_IU_form').innerHTML = this.manual_form_creation();
+		this.dom.show_element('Div_IU_form','block');
+		this.dom.remove_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_alumnograduacion_DELETE');
+
+		// poner onsubmit y action para DELETE (convencion ET2)
+		this.dom.assign_property_value('form_iu','onsubmit','return entidad.DELETE_submit_'+this.nombreentidad+'();');
+		this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
+
+		// ocultar el campo nuevo fichero y mostrar link a fichero existente si aplica
+		this.dom.hide_element_form('nuevo_foto_persona');
+		this.dom.assign_property_value('link_foto_persona', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+(fila.foto_persona||''));
+
+		// formatear fecha para mostrar
+		fila.fechaNacimiento_persona = this.mostrarcambioatributo('fechaNacimiento_persona', fila.fechaNacimiento_persona);
+
+		// rellenar valores
+		this.dom.rellenarvaloresform(fila);
+
+		// poner inactivos los campos
+		this.dom.colocartodosreadonly('form_iu');
+
+		// colocar boton de submit
+		this.dom.colocarboton('DELETE');
+
+		setLang();
+	}
+
+	createForm_SHOWCURRENT(fila){
+
+		// limpiar y poner visible el formulario
+		document.getElementById('contenedor_IU_form').innerHTML = this.manual_form_creation();
+		this.dom.show_element('Div_IU_form','block');
+		this.dom.remove_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_alumnograduacion_SHOWCURRENT');
+
+		// rellenar valores
+		this.dom.rellenarvaloresform(fila);
+
+		// poner inactivos los campos
+		this.dom.colocartodosreadonly('form_iu');
+
+		// hide file input and set link to existing file
+		this.dom.hide_element_form('nuevo_foto_persona');
+		this.dom.assign_property_value('link_foto_persona', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+(fila.foto_persona||''));
+
+		setLang();
 	}
 
 	/**********************************************************************************************
@@ -196,19 +339,27 @@ class alumnograduacion extends EntidadAbstracta{
 
 	*/
 	ADD_fechanacimiento_persona_validation(){
-		
-		if (!(this.min_size('fechaNacimiento_persona',8))){
-			this.dom.mostrar_error_campo('fechaNacimiento_persona','fechaNacimiento_persona_min_size_KO');
-			return "fechaNacimiento_persona_min_size_KO";
-		}
-		if (!(this.max_size('fechaNacimiento_persona',10))){
-			this.dom.mostrar_error_campo('fechaNacimiento_persona','fechaNacimiento_persona_max_size_KO');
-			return "fechaNacimiento_persona_max_size_KO";
-		}
-		// Date format DD/MM/YYYY or DD-MM-YYYY
-		if (!(this.format('fechaNacimiento_persona', '^[0-9]{2}[/-][0-9]{2}[/-][0-9]{4}$'))){
+		var el = document.getElementById('fechaNacimiento_persona');
+		var v = el ? el.value : '';
+		if (v === ''){ this.dom.mostrar_exito_campo('fechaNacimiento_persona'); return true; }
+		// Accept ISO date (YYYY-MM-DD) or DD/MM/YYYY or DD-MM-YYYY
+		var iso = /^\d{4}-\d{2}-\d{2}$/;
+		var dmy = /^\d{2}[\/\-]\d{2}[\/\-]\d{4}$/;
+		var year, month, day;
+		if (iso.test(v)){
+			var parts = v.split('-');
+			year = parseInt(parts[0],10); month = parseInt(parts[1],10); day = parseInt(parts[2],10);
+		} else if (dmy.test(v)){
+			var parts = v.split(/[\/\-]/);
+			day = parseInt(parts[0],10); month = parseInt(parts[1],10); year = parseInt(parts[2],10);
+		} else {
 			this.dom.mostrar_error_campo('fechaNacimiento_persona','fechaNacimiento_persona_format_KO');
-			return "fechaNacimiento_persona_format_KO";
+			return 'fechaNacimiento_persona_format_KO';
+		}
+		var dt = new Date(year, month-1, day);
+		if (dt.getFullYear() !== year || dt.getMonth() !== month-1 || dt.getDate() !== day){
+			this.dom.mostrar_error_campo('fechaNacimiento_persona','fechaNacimiento_persona_valid_KO');
+			return 'fechaNacimiento_persona_valid_KO';
 		}
 		this.dom.mostrar_exito_campo('fechaNacimiento_persona');
 		return true;
@@ -352,6 +503,12 @@ class alumnograduacion extends EntidadAbstracta{
 		return result;	
 
 
+	}
+
+	// ET2-compatible submit wrapper for this entity
+	ADD_submit_alumnograduacion(){
+		// delegate to existing ADD_submit_persona implementation
+		return this.ADD_submit_persona();
 	}
 
 	EDIT_nombre_persona_validation(){
