@@ -124,41 +124,52 @@ ubicacion.prototype.ADD_id_site_validation = function(){('id_site','id_site_form
 };
 
 ubicacion.prototype.ADD_site_latitud_validation = function(){
-    var v = document.getElementById('site_latitud').value;
+    var el = document.getElementById('site_latitud');
+    var v = el ? el.value : '';
     if (v === '' || !(this.validations.format('site_latitud','^[-+]?[0-9]+(\\.[0-9]+)?$'))){
         this.dom.mostrar_error_campo('site_latitud','site_latitud_format_KO');
         return 'site_latitud_format_KO';
     }
     var num = parseFloat(v);
-    if (isNaN(num) || num < -90 || num > 90){
+    if (isNaN(num)){
         this.dom.mostrar_error_campo('site_latitud','site_latitud_format_KO');
         return 'site_latitud_format_KO';
+    }
+    if (num < -90 || num > 90){
+        this.dom.mostrar_error_campo('site_latitud','site_latitud_range_KO');
+        return 'site_latitud_range_KO';
     }
     this.dom.mostrar_exito_campo('site_latitud');
     return true;
 };
 
 ubicacion.prototype.ADD_site_longitud_validation = function(){
-    var v = document.getElementById('site_longitud').value;
+    var el = document.getElementById('site_longitud');
+    var v = el ? el.value : '';
     if (v === '' || !(this.validations.format('site_longitud','^[-+]?[0-9]+(\\.[0-9]+)?$'))){
         this.dom.mostrar_error_campo('site_longitud','site_longitud_format_KO');
         return 'site_longitud_format_KO';
     }
     var num = parseFloat(v);
-    if (isNaN(num) || num < -180 || num > 180){
+    if (isNaN(num)){
         this.dom.mostrar_error_campo('site_longitud','site_longitud_format_KO');
         return 'site_longitud_format_KO';
+    }
+    if (num < -180 || num > 180){
+        this.dom.mostrar_error_campo('site_longitud','site_longitud_range_KO');
+        return 'site_longitud_range_KO';
     }
     this.dom.mostrar_exito_campo('site_longitud');
     return true;
 };
 
 ubicacion.prototype.ADD_site_altitude_validation = function(){
-    var v = document.getElementById('site_altitude').value;
+    var el = document.getElementById('site_altitude');
+    var v = el ? el.value : '';
     if (v === ''){ this.dom.mostrar_exito_campo('site_altitude'); return true; }
     if (isNaN(v)){
-        this.dom.mostrar_error_campo('site_altitude','site_altitude_format_KO');
-        return 'site_altitude_format_KO';
+        this.dom.mostrar_error_campo('site_altitude','site_altitude_not_numeric_KO');
+        return 'site_altitude_not_numeric_KO';
     }
     this.dom.mostrar_exito_campo('site_altitude');
     return true;
@@ -169,6 +180,10 @@ ubicacion.prototype.ADD_site_locality_validation = function(){
         this.dom.mostrar_error_campo('site_locality','site_locality_min_size_KO');
         return 'site_locality_min_size_KO';
     }
+    if (!(this.validations.max_size('site_locality',40))){
+        this.dom.mostrar_error_campo('site_locality','site_locality_maxlen_KO');
+        return 'site_locality_maxlen_KO';
+    }
     this.dom.mostrar_exito_campo('site_locality');
     return true;
 };
@@ -178,23 +193,40 @@ ubicacion.prototype.ADD_site_provider_login_validation = function(){
         this.dom.mostrar_error_campo('site_provider_login','site_provider_login_min_size_KO');
         return 'site_provider_login_min_size_KO';
     }
+    if (!(this.validations.max_size('site_provider_login',30))){
+        this.dom.mostrar_error_campo('site_provider_login','site_provider_login_maxlen_KO');
+        return 'site_provider_login_maxlen_KO';
+    }
     this.dom.mostrar_exito_campo('site_provider_login');
     return true;
 };
 
 // File validations for photos: north/south/east/west
 ['north','south','east','west'].forEach(dir=>{
-    var field = 'nuevo_site_'+dir+'_photo';
-    ubicacion.prototype['ADD_'+field+'_validation'] = function(){
-        var id = field;
+    var nuevo = 'nuevo_site_'+dir+'_photo';
+    var plain = 'site_'+dir+'_photo';
+    ubicacion.prototype['ADD_'+nuevo+'_validation'] = function(){
+        var id = nuevo;
         var obj = document.getElementById(id);
         // in ADD for ubicacion photos are OPTIONAL -> if not provided, OK
-        if (!obj || obj.files.length == 0){ this.dom.mostrar_exito_campo(id); return true; }
-        if (!(this.validations.type_file(id,['image/jpeg','image/png']))){ this.dom.mostrar_error_campo(id,'ERR_FILE_TYPE'); return 'ERR_FILE_TYPE'; }
-        if (!(this.validations.max_size_file(id,3145728))){ this.dom.mostrar_error_campo(id,'ERR_FILE_TOO_LARGE'); return 'ERR_FILE_TOO_LARGE'; }
+        if (!obj || !obj.files || obj.files.length == 0){ this.dom.mostrar_exito_campo(id); return true; }
+        var f = obj.files[0];
+        var name = f.name || '';
+        // name must have an extension
+        if (!/\.[A-Za-z0-9]+$/.test(name)){
+            this.dom.mostrar_error_campo(id, plain+'_no_extension_KO');
+            return plain+'_no_extension_KO';
+        }
+        // spaces in name not allowed
+        if (/\s/.test(name)){
+            this.dom.mostrar_error_campo(id, plain+'_name_KO');
+            return plain+'_name_KO';
+        }
+        if (!(this.validations.type_file(id,['image/jpeg','image/png']))){ this.dom.mostrar_error_campo(id, plain+'_type_KO'); return plain+'_type_KO'; }
+        if (!(this.validations.max_size_file(id,3145728))){ this.dom.mostrar_error_campo(id, plain+'_size_KO'); return plain+'_size_KO'; }
         this.dom.mostrar_exito_campo(id); return true;
     };
-    ubicacion.prototype['EDIT_'+field+'_validation'] = ubicacion.prototype['ADD_'+field+'_validation'];
+    ubicacion.prototype['EDIT_'+nuevo+'_validation'] = ubicacion.prototype['ADD_'+nuevo+'_validation'];
 });
 
 // Submit checkers

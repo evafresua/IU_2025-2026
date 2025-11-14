@@ -4,6 +4,7 @@ var textos_ES = {
 	'text_titulo_app': 'Interfaz ET2 IU',
 	'text_titulo_menu': 'Opciones Menu',
 	'text_titulo_pie': 'Pie de pagina',
+	'text_article': 'Seccion article',
 	'label_seleccioncolumnas': 'Seleccionar columnas',
 
 	// Menu

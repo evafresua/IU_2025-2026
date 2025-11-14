@@ -4,6 +4,7 @@ var textos_EN = {
 	'text_titulo_app': 'IU ET2 Interface',
 	'text_titulo_menu': 'Menu Options',
 	'text_titulo_pie': 'Footer',
+    'text_article': 'Article section',
     'label_seleccioncolumnas': 'Select columns ',
     
     // textos de test
