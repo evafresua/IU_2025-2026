@@ -4,37 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "1a910308b4b50b36",
+        "id": "06fcc79ddea99d49",
         "type": "tabs",
         "children": [
           {
-            "id": "8df93c70c47c3b73",
+            "id": "166ca990c9313ce2",
             "type": "leaf",
             "state": {
               "type": "mindmapview",
               "state": {
-                "file": "Clase 30 oct 2025 (Memoria)-mindmap.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Clase 30 oct 2025 (Memoria)-mindmap"
-            }
-          },
-          {
-            "id": "6349d2c5e04e07bc",
-            "type": "leaf",
-            "state": {
-              "type": "mindmapview",
-              "state": {
-                "file": "Clase 30 oct 2025 (Memoria)-mindmap.md"
+                "file": "Clase 06 nov-mindmap.md"
               },
               "icon": "blocks",
-              "title": "Clase 30 oct 2025 (Memoria)-mindmap"
+              "title": "Clase 06 nov-mindmap"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -183,12 +168,14 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "6349d2c5e04e07bc",
+  "active": "166ca990c9313ce2",
   "lastOpenFiles": [
+    "Clase 06 nov.md",
+    "Clase 06 nov-mindmap.md",
     "Clase 30 oct 2025 (Memoria)-mindmap.pdf",
+    "Clase 30 oct 2025 (Memoria)-mindmap.md",
     "Clase 30 oct 2025 (Memoria).md",
     "Clase 23 oct 2025 (Factor humano).md",
-    "Clase 30 oct 2025 (Memoria)-mindmap.md",
     "Inicio.md",
     "ET2/README.md",
     "Tareas semanales/Semana 7 (20 Octubre - 26 Octubre).md",
