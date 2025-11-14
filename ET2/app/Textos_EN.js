@@ -127,6 +127,13 @@ var textos_EN = {
 	'EstadoA_invalid_KO': 'Estado no permitido',
 	'VolumenR_maxlen_KO': 'Máximo 4 caracteres',
 
+	// Helper texts for file inputs (shown near the file input, translatable)
+	'help_nuevo_FicheropdfA': 'Type: PDF (max 5 MB).',
+	'help_nuevo_site_north_photo': 'JPEG/PNG (max 3 MB).',
+	'help_nuevo_site_south_photo': 'JPEG/PNG (max 3 MB).',
+	'help_nuevo_site_east_photo': 'JPEG/PNG (max 3 MB).',
+	'help_nuevo_site_west_photo': 'JPEG/PNG (max 3 MB).',
+
 	// alumnograduacion (validation keys)
 	'alumnograduacion_login_min_size_KO': 'El tamaño debe ser como min 4',
 	'alumnograduacion_login_max_size_KO': 'El tamaño debe ser de máximo 15',

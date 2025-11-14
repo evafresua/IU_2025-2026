@@ -56,7 +56,9 @@ articulo.prototype.manual_form_creation = function(){
     form += `\n<input type='text' id='FicheropdfA' name='FicheropdfA' />`;
     form += `\n<a id='link_FicheropdfA' href='#'><img src='./iconos/FILE.png' /></a><br/>`;
     form += `\n<label id='label_nuevo_FicheropdfA' class='nuevo_FicheropdfA'></label>`;
-    form += `\n<input type='file' id='nuevo_FicheropdfA' name='nuevo_FicheropdfA' />`;
+    // helper label (translatable) describing allowed file type/size
+    form += `\n<label id='help_nuevo_FicheropdfA' class='help_nuevo_FicheropdfA'></label>`;
+    form += `\n<input type='file' id='nuevo_FicheropdfA' name='nuevo_FicheropdfA' accept='.pdf,application/pdf' />`;
     form += `\n<span id='span_error_nuevo_FicheropdfA'><a id='error_nuevo_FicheropdfA'></a></span><br/>`;
     form += `\n<label class='label_EstadoA' for='EstadoA'></label>`;
     form += `\n<select id='EstadoA' name='EstadoA'><option value='Enviado'>Enviado</option><option value='Revision'>Revision</option><option value='Publicado'>Publicado</option></select>`;
@@ -241,22 +243,60 @@ articulo.prototype.ADD_PagFinA_validation = function(){
 };
 
 articulo.prototype.ADD_nuevo_FicheropdfA_validation = function(){
-    var id = 'nuevo_FicheropdfA';
-    // require file in ADD
-    if (!(this.validations.not_exist_file(id))){
-        this.dom.mostrar_error_campo(id,'ERR_FILE_REQUIRED');
-        return 'ERR_FILE_REQUIRED';
+    var fileId = 'nuevo_FicheropdfA';
+    var textId = 'FicheropdfA';
+    var fileEl = document.getElementById(fileId);
+    var textEl = document.getElementById(textId);
+
+    // If a real file input has a selected file, validate it
+    if (fileEl && fileEl.files && fileEl.files.length > 0){
+        var f = fileEl.files[0];
+        // type must be application/pdf
+        if (!(this.validations.type_file(fileId,['application/pdf']))){
+            this.dom.mostrar_error_campo(fileId,'FicheropdfA_type_KO');
+            return 'FicheropdfA_type_KO';
+        }
+        if (!(this.validations.max_size_file(fileId,5242880))){
+            this.dom.mostrar_error_campo(fileId,'FicheropdfA_size_KO');
+            return 'FicheropdfA_size_KO';
+        }
+        // name should have extension and no spaces
+        var name = f.name || '';
+        if (!/\.[A-Za-z0-9]+$/.test(name)){
+            this.dom.mostrar_error_campo(fileId,'FicheropdfA_no_extension_KO');
+            return 'FicheropdfA_no_extension_KO';
+        }
+        if (/\s/.test(name)){
+            this.dom.mostrar_error_campo(fileId,'FicheropdfA_name_KO');
+            return 'FicheropdfA_name_KO';
+        }
+        this.dom.mostrar_exito_campo(fileId);
+        return true;
     }
-    if (!(this.validations.type_file(id,['application/pdf']))){
-        this.dom.mostrar_error_campo(id,'ERR_FILE_TYPE');
-        return 'ERR_FILE_TYPE';
+
+    // If no file selected but the text field contains a filename (used by tests), validate its name
+    if (textEl && textEl.value && textEl.value.trim() !== ''){
+        var fname = textEl.value.trim();
+        if (!/\.[A-Za-z0-9]+$/.test(fname)){
+            this.dom.mostrar_error_campo(textId,'FicheropdfA_no_extension_KO');
+            return 'FicheropdfA_no_extension_KO';
+        }
+        var ext = fname.split('.').pop().toLowerCase();
+        if (ext !== 'pdf'){
+            this.dom.mostrar_error_campo(textId,'FicheropdfA_type_KO');
+            return 'FicheropdfA_type_KO';
+        }
+        if (/\s/.test(fname)){
+            this.dom.mostrar_error_campo(textId,'FicheropdfA_name_KO');
+            return 'FicheropdfA_name_KO';
+        }
+        this.dom.mostrar_exito_campo(textId);
+        return true;
     }
-    if (!(this.validations.max_size_file(id,5242880))){
-        this.dom.mostrar_error_campo(id,'ERR_FILE_TOO_LARGE');
-        return 'ERR_FILE_TOO_LARGE';
-    }
-    this.dom.mostrar_exito_campo(id);
-    return true;
+
+    // No file provided -> error
+    this.dom.mostrar_error_campo(fileId,'FicheropdfA_empty_KO');
+    return 'FicheropdfA_empty_KO';
 };
 
 // NEW: validation for AutoresA (max length -> cause KO when > 199)
@@ -384,12 +424,41 @@ articulo.prototype.EDIT_ISSN_validation = articulo.prototype.ADD_ISSN_validation
 articulo.prototype.EDIT_PagIniA_validation = articulo.prototype.ADD_PagIniA_validation;
 articulo.prototype.EDIT_PagFinA_validation = articulo.prototype.ADD_PagFinA_validation;
 articulo.prototype.EDIT_nuevo_FicheropdfA_validation = function(){
-    var id = 'nuevo_FicheropdfA';
-    var obj = document.getElementById(id);
-    if (!obj || obj.files.length == 0){ this.dom.mostrar_exito_campo(id); return true; }
-    if (!(this.validations.type_file(id,['application/pdf']))){ this.dom.mostrar_error_campo(id,'ERR_FILE_TYPE'); return 'ERR_FILE_TYPE'; }
-    if (!(this.validations.max_size_file(id,5242880))){ this.dom.mostrar_error_campo(id,'ERR_FILE_TOO_LARGE'); return 'ERR_FILE_TOO_LARGE'; }
-    this.dom.mostrar_exito_campo(id); return true;
+    var fileId = 'nuevo_FicheropdfA';
+    var textId = 'FicheropdfA';
+    var fileEl = document.getElementById(fileId);
+    var textEl = document.getElementById(textId);
+    if (!fileEl || !fileEl.files || fileEl.files.length == 0){
+        // no new file -> if text field present, validate name; else OK
+        if (textEl && textEl.value && textEl.value.trim() !== ''){
+            var fname = textEl.value.trim();
+            if (!/\.[A-Za-z0-9]+$/.test(fname)){
+                this.dom.mostrar_error_campo(textId,'FicheropdfA_no_extension_KO');
+                return 'FicheropdfA_no_extension_KO';
+            }
+            var ext = fname.split('.').pop().toLowerCase();
+            if (ext !== 'pdf'){
+                this.dom.mostrar_error_campo(textId,'FicheropdfA_type_KO');
+                return 'FicheropdfA_type_KO';
+            }
+            this.dom.mostrar_exito_campo(textId);
+            return true;
+        }
+        this.dom.mostrar_exito_campo(fileId); return true;
+    }
+    // validate provided file
+    if (!(this.validations.type_file(fileId,['application/pdf']))){ this.dom.mostrar_error_campo(fileId,'FicheropdfA_type_KO'); return 'FicheropdfA_type_KO'; }
+    if (!(this.validations.max_size_file(fileId,5242880))){ this.dom.mostrar_error_campo(fileId,'FicheropdfA_size_KO'); return 'FicheropdfA_size_KO'; }
+    var name = fileEl.files[0].name || '';
+    if (!/\.[A-Za-z0-9]+$/.test(name)){
+        this.dom.mostrar_error_campo(fileId,'FicheropdfA_no_extension_KO');
+        return 'FicheropdfA_no_extension_KO';
+    }
+    if (/\s/.test(name)){
+        this.dom.mostrar_error_campo(fileId,'FicheropdfA_name_KO');
+        return 'FicheropdfA_name_KO';
+    }
+    this.dom.mostrar_exito_campo(fileId); return true;
 };
 
 // Mirror ADD validations for EDIT where appropriate

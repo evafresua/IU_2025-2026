@@ -45,9 +45,12 @@ ubicacion.prototype.manual_form_creation = function(){
         form += `\n<label id='label_${field}' class='${field}'></label>`;
         form += `\n<input type='text' id='${field}' name='${field}' />`;
         form += `\n<a id='link_${field}' href='#'><img src='./iconos/FILE.png' /></a><br/>`;
-        form += `\n<label id='label_nuevo_${field}' class='nuevo_${field}'></label>`;
-        form += `\n<input type='file' id='nuevo_${field}' name='nuevo_${field}' />`;
-        form += `\n<span id='span_error_nuevo_${field}'><a id='error_nuevo_${field}'></a></span><br/>`;
+    form += `\n<label id='label_nuevo_${field}' class='nuevo_${field}'></label>`;
+    // helper label translatable via locale (class: help_nuevo_site_*_photo)
+    form += `\n<label id='help_nuevo_${field}' class='help_nuevo_${field}'></label>`;
+    // accept only common image types
+    form += `\n<input type='file' id='nuevo_${field}' name='nuevo_${field}' accept='image/jpeg,image/png' />`;
+    form += `\n<span id='span_error_nuevo_${field}'><a id='error_nuevo_${field}'></a></span><br/>`;
     });
     form += `\n</form>`;
     return form;

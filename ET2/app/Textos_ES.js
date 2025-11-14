@@ -105,6 +105,13 @@ var textos_ES = {
 	'EstadoA_invalid_KO': 'Estado no permitido',
 	'VolumenR_maxlen_KO': 'Maximo 4 caracteres',
 
+	// Helper texts for file inputs (shown near the file input, translatable)
+	'help_nuevo_FicheropdfA': 'Tipo: PDF (máx. 5 MB).',
+	'help_nuevo_site_north_photo': 'JPEG/PNG (máx. 3 MB).',
+	'help_nuevo_site_south_photo': 'JPEG/PNG (máx. 3 MB).',
+	'help_nuevo_site_east_photo': 'JPEG/PNG (máx. 3 MB).',
+	'help_nuevo_site_west_photo': 'JPEG/PNG (máx. 3 MB).',
+
 	// Alumnograduacion (Spanish)
 	'alumnograduacion_login': 'Login',
 	'alumnograduacion_password': 'Contrasena',
